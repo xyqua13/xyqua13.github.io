@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+body{    width:900px;
+        margin-left:auto;
+        margin-right:auto;
+}
+</style>
+<body>
+
+<script>
+    var app = angular.module("keepTalkikng", []);
+    app.controller("keeptTalkingControl", function($scope) {
+        $scope.litInd=[];
+        $scope.litIndLit=[]
+        $scope.indicatorIN="";
+        $scope.isLit=false;
+
+        $scope.addInd= function(){ 
+            if($scope.litInd.indexOf($scope.indicatorIN.toUpperCase())== -1)
+            {
+              $scope.litInd.push($scope.indicatorIN.toUpperCase());
+              $scope.litIndLit.push($scope.isLit);
+              $scope.indicatorIN="";
+              $scope.isLit=false;
+            }
+        } 
+      
+        $scope.basicWireMSG = "-------";
+        $scope.basicWires=[];
+        $scope.basicWireColors = {'Red': 0,'Blue': 0,'White': 0,'Yellow': 0,'Black': 0}
+        $scope.addBasicWire= function (color) {
+            $scope.basicWireColors[color]++;
+            console.log($scope.basicWireColors[color]);
+            if($scope.basicWires.length<6)
+            {
+                $scope.basicWires.push(color);
+                $scope.basicWireCheck();
+            }
+        }
+        $scope.basicWireCheck= function(){
+            if($scope.basicWires.length>=3)
+            {
+                if($scope.basicWires.length==3)
+                {   console.log($scope.basicWires[$scope.basicWires.length-1]);
+                    if($scope.basicWireColors["Red"]==0)
+                        {$scope.basicWireMSG="SECOND WIRE";}
+                    else if ($scope.basicWires[2]=="White")
+                        {$scope.basicWireMSG="LAST WIRE";}
+                    else if ($scope.basicWireColors["Blue"]>1)
+                        {$scope.basicWireMSG="LAST BLUE";}
+                    else
+                        {$scope.basicWireMSG="LAST WIRE";}
+                    
+                }
+                else if($scope.basicWires.length==4)
+                {
+                     if($scope.basicWireColors["Red"] > 1 && !$scope.lastDigEven)
+                         {$scope.basicWireMSG="LAST RED WIRE";}
+                     else if($scope.basicWires[3]=="Yellow"&&$scope.basicWireColors["Red"]==0)
+                        {$scope.basicWireMSG="FIRST WIRE";}
+                    else if($scope.basicWireColors["Blue"]==1)
+                        {$scope.basicWireMSG="FIRST WIRE";}
+                    else if($scope.basicWireColors["Yellow"]>1)
+                        {$scope.basicWireMSG="LAST WIRE";}
+                    else
+                        {$scope.basicWireMSG="SECOND WIRE";}
+                }   
+                else if($scope.basicWires.length==5)
+                {
+                    if($scope.basicWires[4]=="Black"&& !$scope.lastDigEven)
+                        {$scope.basicWireMSG="FOURTH WIRE";}
+                    else if ($scope.basicWireColors["Red"]==1&&$scope.basicWireColors["Yellow"]>1)
+                        {$scope.basicWireMSG="FIRST WIRE";}
+                    else if ($scope.basicWireColors["BLACK"]==0)
+                        {$scope.basicWireMSG="SECOND WIRE";}
+                    else
+                        {$scope.basicWireMSG="FIRST WIRE";}
+                }
+                else if($scope.basicWires.length==6)
+                {
+                     if($scope.basicWireColors["Yellow"]==0&& !$scope.lastDigEven)
+                        {$scope.basicWireMSG="THIRD WIRE";}
+                    else if ($scope.basicWireColors["Yellow"]==1&&$scope.basicWireColors["White"]>1)
+                        {$scope.basicWireMSG="FOURTH WIRE";}
+                    else if ($scope.basicWireColors["Red"]==0)
+                        {$scope.basicWireMSG="LAST WIRE";}
+                    else
+                        {$scope.basicWireMSG="FOURTH WIRE";}
+                }
+
+            }
+            else
+            {
+                 $scope.basicWireMSG="--------"
+            }
+        }
+
+        $scope.removeItem = function (x) {
+            $scope.basicWireColors[$scope.basicWires[x]]--;
+            //console.log($scope.basicWireColors[$scope.basicWires[x]]);
+            $scope.basicWires.splice(x, 1);
+            $scope.basicWireCheck();
+        }
+        $scope.checkSerial = function()
+        {
+            $scope.vowles=0;
+
+            $scope.lastDigEven=null;
+            $scope.serialSplit=$scope.serial.split('');
+            if($scope.serialSplit[$scope.serialSplit.length-1]%2 == 0)
+                $scope.lastDigEven=true;
+            else
+                $scope.lastDigEven=false;
+            for(i=0;i<$scope.serialSplit.length;i++)
+                if( ['a', 'e', 'i', 'o', 'u'].indexOf($scope.serialSplit[i]) !== -1)
+                    $scope.vowles++;
+          $scope.basicWireCheck();
+        }
+        
+
+        //THeButton
+        $scope.btnTxt="";
+        $scope.btnResponse="---"
+        $scope.btnShowStrip=false;
+        $scope.theButton = function(color)
+        {
+            $scope.btnTxt="";
+            $scope.btnResponse="---"
+            $scope.btnShowStrip=false;
+
+
+            if($scope.btnTxt.toUpperCase()=="ABORT"&&color=="blue")
+                {$scope.btnResponse="Press and Hold";$scope.btnShowStrip=true;}
+            else if ($scope.batteries>1&&$scope.btnTxt.toUpperCase()=="Detonate")
+                {$scope.btnResponse="Press and Immediately Release";$scope.btnShowStrip=false;}
+            else if(color=='white'&&$scope.litIndLit[$scope.litInd.indexOf('CAR')]==true)
+                {$scope.btnResponse="Press and Hold";$scope.btnShowStrip=true;}
+            else if($scope.batteries>2&&$scope.litIndLit[$scope.litInd.indexOf('FRK')]==true)
+                {$scope.btnResponse="Press and Immediately Release";$scope.btnShowStrip=false;}
+            else if(color=='yellow')
+                {$scope.btnResponse="Press and Hold";$scope.btnShowStrip=true;}
+            else if(color=='red'&&$scope.btnTxt.toUpperCase()=="HOLD")
+                {$scope.btnResponse="Press and Immediately Release";$scope.btnShowStrip=false;}
+            else
+                {$scope.btnResponse="Press and Hold";$scope.btnShowStrip=true;}
+        }
+        
+        //SEQUENCE WIRE FUNCTIONS
+        $scope.seqResult = "---"
+        $scope.redSeq = ['C','B','A','AC','B','AC','ABC','AB','B']
+        $scope.blueSeq = ['B','AC','B','A','B','BC','C','AC','A']
+        $scope.blackSeq = ['ABC','AC','B','AC','B','BC','AB','C','C']
+        $scope.seqCount = 0
+        $scope.redSeqCount = 0
+        $scope.blueSeqCount = 0
+        $scope.blackSeqCount = 0
+
+        $scope.addWireSeq = function (color, letter) {
+           
+            var check = false
+
+            if(color == 'Red' && $scope.redSeqCount < 9)
+            {
+                
+                if($scope.redSeq[$scope.redSeqCount].length > 1)
+                {
+                    check = $scope.redSeq[$scope.redSeqCount].indexOf(letter)
+
+                    if(check == true)
+                        $scope.seqResult = "CUT: " + color + " " + letter 
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                else
+                {
+                    if(letter == $scope.redSeq[$scope.redSeqCount])
+                        $scope.seqResult = "CUT: " + color + " " + letter   
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                $scope.redSeqCount++
+            }
+
+            if(color == 'Blue' && $scope.blueSeqCount < 9)
+            {
+                if($scope.blueSeq[$scope.blueSeqCount].length > 1)
+                {
+                    check = $scope.blueSeq[$scope.blueSeqCount].indexOf(letter)
+
+                    if(check == true)
+                        $scope.seqResult = "CUT: " + color + " " + letter
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                else
+                {
+                    if(letter == $scope.blueSeq[$scope.blueSeqCount])
+                        $scope.seqResult = "CUT: " + color + " " + letter 
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                $scope.blueSeqCount++
+            }
+
+            if(color == 'Black' && $scope.blackSeqCount < 9)
+            {
+                
+                if($scope.blackSeq[$scope.blackSeqCount].length > 1)
+                {
+                    check = $scope.blackSeq[$scope.blackSeqCount].includes(letter)
+
+                    if(check == true)
+                        $scope.seqResult = "CUT: " + color + " " + letter 
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                else
+                {
+                    if(letter == $scope.blackSeq[$scope.blackSeqCount])
+                        $scope.seqResult = "CUT: " + color + " " + letter 
+                    else
+                        $scope.seqResult = "DON'T CUT: " + color + " " + letter 
+                }
+                $scope.blackSeqCount++
+            }
+
+            $scope.seqCount++
+        }
+
+        $scope.resetWireSeq = function(){
+            $scope.redSeqCount = 0
+            $scope.blueSeqCount = 0
+            $scope.blackSeqCount = 0
+            $scope.seqResult = "RESET"
+        }
+        
+        //PASSWORD FUNCTIONS
+        $scope.passList = ['about','after','again','below','could','every','first',
+        'found','great','house','large','learn','never','other','place','plant',
+        'point','right','small','sound','spell','still','study','their','there',
+        'these','things','think','three','water','where','which','world','would',
+        'write']
+        
+    });
+</script>
+
+
+
+
+
+
+
+
+    <div ng-app="keepTalkikng" ng-cloak ng-controller="keeptTalkingControl">
+       <h2>Input SECTION</h2>
+        <h4> Serial Number</h4>
+        <input type = "text"; ng-model="serial" ng-blur="checkSerial()">{{serial}}
+        <h4>Batteries</h4>
+        <input type="text"; ng-model="batteries">{{batteries}}
+        <h4>INDICATORS</h4>
+        <h5 class="col-sm-12" ng-repeat="x in litInd track by $index">
+            {{x}} isLIT: {{litIndLit[$index]}}
+        </h5>
+        <input ng-model="indicatorIN" type="text">
+        LIT: <input type="checkbox" ng-model="isLit">
+        <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false">Add Indicator</button>
+
+
+
+        <!--ON THE SUBJECT OF WIRES-->
+        <hr class="col-md-12">
+        <div class="col-md-12">
+            <h2>On the Subject of Wires</h2>
+            <button type="button" class="btn btn-primary" ng-click="addBasicWire('Blue')">Blue</button>
+            <button type="button" class="btn btn-danger" ng-click="addBasicWire('Red')">Red</button>
+            <button type="button" class="btn btn-warning" ng-click="addBasicWire('Yellow')">Yellow</button>
+            <button type="button" class="btn btn-secondary" ng-click="addBasicWire('White')">White</button>
+            <button type="button" class="btn" style="color:white;background-color:black;" ng-click="addBasicWire('Black')">Black</button>
+            <h3 class="col-md-12">CUT: {{basicWireMSG}}</h3>
+            <ul class="col-md-3" style="list-style-type:none">
+                <li ng-repeat="value in basicWires track by $index" class="col-md-12">
+                    <span ng-if="value=='Red'" class="btn-danger col-md-12">
+                        {{value}}
+                        <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                    </span>
+                    <span ng-if="value=='White'" class="btn-secondary col-md-12">
+                            {{value}}
+                        <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                    </span>
+                    <span ng-if="value=='Blue'" class="btn-primary col-md-12">
+                        {{value}}
+                        <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                    </span>
+                    <span ng-if="value=='Black'" style="color:white;background-color:black;float:right;" class="col-md-12">
+                        {{value}}
+                        <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                    </span>
+                     <span ng-if="value=='Yellow'" class="btn-warning col-md-12">
+                        {{value}}
+                        <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                        <br>
+                    </span>
+                <li>
+            </ul>
+        </div>
+        
+      
+   <!--ON THE SUBJECT OF BUTTONS-->  
+    <hr class="col-sm-12">
+    <div class="class-sm-12">
+      <h2>On the Subject of Buttons</h2>
+      <div class="col-sm-12">
+            <h4>Button Text: </h4><input ng-model="btnTxt" type="text" class="col-sm-6">
+      </div>
+      <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')">Blue</button>
+      <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')">Red</button>
+      <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')">Yellow</button>
+      <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')">White</button>
+      <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')">Black</button>
+      <div class="col-sm-12">
+        <h4>{{btnResponse}}</h4>
+      </div>
+      <div class="col-sm-12" ng-show="btnShowStrip">
+        <h4 class="col-sm-12">Color Strip</h4>
+        <div class="bg-primary col-sm-4"><h4>Relase on 4</h4></div>
+        <div class="bg-warning col-sm-4" style="background-color:#F89406"><h4>Relase on 5</h4></div>
+        <div class="bg-secondary col-sm-4"><h4>ALL OTHERS 1</h4></div>
+      </div>
+    </div>
+    <br>
+      
+      
+      
+      
+       <!--ON THE SUBJECT OF WIRE SEQUENCES-->   
+       <hr class="col-sm-12">
+       <h2>On the Subject of Wire Sequences</h2>
+            <div class="col-sm-12">
+          <div class="col-sm-4">
+            <div class="col-sm-12" style="background-color:#d9534f; color:white;"><h4>RED</h4></div>
+            <button type="button" class="btn btn-default col-sm-4" 
+            ng-click="addWireSeq('Red', 'A')">A</button>
+            <button type="button" class="btn btn-default col-sm-4"
+            ng-click="addWireSeq('Red', 'B')">B</button>
+            <button type="button" class="btn btn-default col-sm-4"
+            ng-click="addWireSeq('Red', 'C')">C</button>
+          </div>
+          <div class="col-sm-4">
+            <div class="bg-primary col-sm-12"><h4>BLUE</h4></div>
+            <button type="button" class="btn btn-default col-sm-4" 
+            ng-click="addWireSeq('Blue', 'A')">A</button>
+            <button type="button" class="btn btn-default col-sm-4" 
+            ng-click="addWireSeq('Blue', 'B')">B</button>
+            <button type="button" class="btn btn-default col-sm-4" 
+            ng-click="addWireSeq('Blue', 'C')">C</button>
+          </div>
+          <div class="col-sm-4">
+            <div class="bg-primary col-sm-12" style="background-color:black; color:white;"><h4>BLACK</h4></div>
+            <button type="button" class="btn btn-default col-sm-4"
+            ng-click="addWireSeq('Black', 'A')">A</button>
+            <button type="button" class="btn btn-default col-sm-4"
+            ng-click="addWireSeq('Black', 'B')">B</button>
+            <button type="button" class="btn btn-default col-sm-4"
+            ng-click="addWireSeq('Black', 'C')">C</button>
+          </div>
+              <div class="col-sm-12"><h3>{{seqResult}}</h3></div>
+              <button type="button" class="btn btn-default col-sm-4"
+            ng-click="resetWireSeq()">Reset Wire Sequences</button>
+        </div>
+
+
+            <!--ON THE SUBJECT OF PASSWORD-->   
+        <hr class="col-sm-12">
+        <h2>On the Subject of Passwords</h2>
+        <div>
+            <h4>First Position Options:</h4> 
+                <input type = "text"; ng-model="serial" ng-blur="passwordSerial()">
+            </div>
+
+
+
+    </div>
+
+</body>
+</html>
+
+
+        
