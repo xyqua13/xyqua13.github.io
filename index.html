@@ -261,6 +261,7 @@ body{    width:900px;
 
 
     <div ng-app="keepTalkikng" ng-cloak ng-controller="keeptTalkingControl">
+    <div class="col-md-12">
        <h2>Input SECTION</h2>
         <h4> Serial Number</h4>
         <input type = "text"; ng-model="serial" ng-blur="checkSerial()">{{serial}}
@@ -273,6 +274,7 @@ body{    width:900px;
         <input ng-model="indicatorIN" type="text">
         LIT: <input type="checkbox" ng-model="isLit">
         <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false">Add Indicator</button>
+    </div>
 
 
 
