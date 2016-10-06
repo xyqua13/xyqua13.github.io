@@ -314,37 +314,38 @@ body{    width:900px;
         </div>
         
       
-   <!--ON THE SUBJECT OF BUTTONS-->  
-    <hr class="col-sm-12">
-    <div class="class-sm-12">
-      <h2>On the Subject of Buttons</h2>
-      <div class="col-sm-12">
-            <h4>Button Text: </h4><input ng-model="btnTxt" type="text" class="col-sm-6">
-      </div>
-      <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')">Blue</button>
-      <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')">Red</button>
-      <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')">Yellow</button>
-      <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')">White</button>
-      <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')">Black</button>
-      <div class="col-sm-12">
-        <h4>{{btnResponse}}</h4>
-      </div>
-      <div class="col-sm-12" ng-show="btnShowStrip">
-        <h4 class="col-sm-12">Color Strip</h4>
-        <div class="bg-primary col-sm-4"><h4>Relase on 4</h4></div>
-        <div class="bg-warning col-sm-4" style="background-color:#F89406"><h4>Relase on 5</h4></div>
-        <div class="bg-secondary col-sm-4"><h4>ALL OTHERS 1</h4></div>
-      </div>
-    </div>
-    <br>
+       <!--ON THE SUBJECT OF BUTTONS-->  
+        <hr class="col-sm-12">
+        <div class="class-sm-12">
+          <h2>On the Subject of Buttons</h2>
+          <div class="col-sm-12">
+                <h4>Button Text: </h4><input ng-model="btnTxt" type="text" class="col-sm-6">
+          </div>
+          <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')">Blue</button>
+          <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')">Red</button>
+          <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')">Yellow</button>
+          <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')">White</button>
+          <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')">Black</button>
+          <div class="col-sm-12">
+            <h4>{{btnResponse}}</h4>
+          </div>
+          <div class="col-sm-12" ng-show="btnShowStrip">
+            <h4 class="col-sm-12">Color Strip</h4>
+            <div class="bg-primary col-sm-4"><h4>Relase on 4</h4></div>
+            <div class="bg-warning col-sm-4" style="background-color:#F89406"><h4>Relase on 5</h4></div>
+            <div class="bg-secondary col-sm-4"><h4>ALL OTHERS 1</h4></div>
+          </div>
+        </div>
+        <br />
       
       
       
       
        <!--ON THE SUBJECT OF WIRE SEQUENCES-->   
        <hr class="col-sm-12">
+       <br />
        <h2>On the Subject of Wire Sequences</h2>
-            <div class="col-sm-12">
+        <div class="col-sm-12">
           <div class="col-sm-4">
             <div class="col-sm-12" style="background-color:#d9534f; color:white;"><h4>RED</h4></div>
             <button type="button" class="btn btn-default col-sm-4" 
@@ -383,9 +384,8 @@ body{    width:900px;
         <h2>On the Subject of Passwords</h2>
         <div>
             <h4>First Position Options:</h4> 
-                <input type = "text"; ng-model="serial" ng-blur="passwordSerial()">
-            </div>
-
+            <input type = "text"; ng-model="serial" ng-blur="passwordSerial()">
+        </div>
 
 
     </div>
