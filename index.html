@@ -273,7 +273,7 @@ body{    width:900px;
         </h5>
         <input ng-model="indicatorIN" type="text">
         LIT: <input type="checkbox" ng-model="isLit">
-        <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="indicatorIN.$pristine">Add Indicator</button>{{(!!indicatorIN}}
+        <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="!indicatorIN">Add Indicator</button>{{(!!indicatorIN}}
     </div>
 
 
