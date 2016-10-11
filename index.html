@@ -5,7 +5,7 @@
     <script src="lib/js/jquery-3.1.1.min.js"></script>
     <script src="lib/js/angular.min.js"></script>
     <script src="lib/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/lib/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
 
 </head>
 <style>
@@ -49,8 +49,11 @@ body{    width:900px;
         $scope.basicWireCheck= function(){
             if($scope.basicWires.length>=3)
             {
+                console.log("Wires: ",$scope.basicWires.length);
+                console.log($scope.basicWireColors)
                 if($scope.basicWires.length==3)
-                {   console.log($scope.basicWires[$scope.basicWires.length-1]);
+                {
+                    console.log("BASIC:3");
                     if($scope.basicWireColors["Red"]==0)
                         {$scope.basicWireMSG="SECOND WIRE";}
                     else if ($scope.basicWires[2]=="White")
@@ -58,11 +61,12 @@ body{    width:900px;
                     else if ($scope.basicWireColors["Blue"]>1)
                         {$scope.basicWireMSG="LAST BLUE";}
                     else
-                        {$scopebasicWireMSG="LAST WIRE";}
+                        {$scope.basicWireMSG="LAST WIRE";}
                     
                 }
                 else if($scope.basicWires.length==4)
                 {
+                    console.log("BASIC:4");
                      if($scope.basicWireColors["Red"] > 1 && !$scope.lastDigEven)
                          {$scope.basicWireMSG="LAST RED WIRE";}
                      else if($scope.basicWires[3]=="Yellow"&&$scope.basicWireColors["Red"]==0)
@@ -76,6 +80,7 @@ body{    width:900px;
                 }   
                 else if($scope.basicWires.length==5)
                 {
+                    console.log("BASIC:5");
                     if($scope.basicWires[4]=="Black"&& !$scope.lastDigEven)
                         {$scope.basicWireMSG="FOURTH WIRE";}
                     else if ($scope.basicWireColors["Red"]==1&&$scope.basicWireColors["Yellow"]>1)
@@ -87,6 +92,7 @@ body{    width:900px;
                 }
                 else if($scope.basicWires.length==6)
                 {
+                    console.log("BASIC:6");
                      if($scope.basicWireColors["Yellow"]==0&& !$scope.lastDigEven)
                         {$scope.basicWireMSG="THIRD WIRE";}
                     else if ($scope.basicWireColors["Yellow"]==1&&$scope.basicWireColors["White"]>1)
@@ -242,7 +248,11 @@ body{    width:900px;
             $scope.blackSeqCount = 0
             $scope.seqResult = "RESET"
         }
-        
+        $scope.resetBasicWire = function(){
+             $scope.basicWires=[];
+             $scope.basicWireMSG="--------";
+             $scope.basicWireColors = {'Red': 0,'Blue': 0,'White': 0,'Yellow': 0,'Black': 0}
+        }
         //PASSWORD FUNCTIONS
         $scope.passList = ['about','after','again','below','could','every','first',
         'found','great','house','large','learn','never','other','place','plant',
@@ -273,7 +283,7 @@ body{    width:900px;
         </h5>
         <input ng-model="indicatorIN" type="text">
         LIT: <input type="checkbox" ng-model="isLit">
-        <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="!indicatorIN">Add Indicator</button>{{(!!indicatorIN}}
+        <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="indicatorIN.length < 3">Add Indicator</button>
     </div>
 
 
@@ -282,12 +292,12 @@ body{    width:900px;
         <hr class="col-md-12">
         <div class="col-md-12">
             <h2>On the Subject of Wires</h2>
-            <button type="button" class="btn btn-primary" ng-click="addBasicWire('Blue')">Blue</button>
-            <button type="button" class="btn btn-danger" ng-click="addBasicWire('Red')">Red</button>
-            <button type="button" class="btn btn-warning" ng-click="addBasicWire('Yellow')">Yellow</button>
-            <button type="button" class="btn btn-secondary" ng-click="addBasicWire('White')">White</button>
-            <button type="button" class="btn" style="color:white;background-color:black;" ng-click="addBasicWire('Black')">Black</button>
-            <h3 class="col-md-12">CUT: {{basicWireMSG}}</h3>
+            <button type="button" class="btn btn-primary" ng-click="addBasicWire('Blue')" ng-disabled="basicWires.length == 6">Blue</button>
+            <button type="button" class="btn btn-danger" ng-click="addBasicWire('Red')" ng-disabled="basicWires.length == 6">Red</button>
+            <button type="button" class="btn btn-warning" ng-click="addBasicWire('Yellow')" ng-disabled="basicWires.length == 6">Yellow</button>
+            <button type="button" class="btn btn-secondary" ng-click="addBasicWire('White')" ng-disabled="basicWires.length == 6">White</button>
+            <button type="button" class="btn" style="color:white;background-color:black;" ng-click="addBasicWire('Black')" ng-disabled="basicWires.length == 6">Black</button>
+            <h3 class="col-md-12">CUT: {{basicWireMSG}}</h3> 
             <ul class="col-md-3" style="list-style-type:none">
                 <li ng-repeat="value in basicWires track by $index" class="col-md-12">
                     <span ng-if="value=='Red'" class="btn-danger col-md-12">
@@ -313,6 +323,8 @@ body{    width:900px;
                     </span>
                 </li>
             </ul>
+            <br>
+            <button type="button" class="btn btn-secondary" ng-click="resetBasicWire()" ng-disabled="basicWires.length == 0">RESET</button>
         </div>
         
       
@@ -323,13 +335,13 @@ body{    width:900px;
           <div class="col-sm-12">
                 <h4>Button Text: </h4><input ng-model="btnTxt" type="text" class="col-sm-6">
           </div>
-          <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')">Blue</button>
-          <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')">Red</button>
-          <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')">Yellow</button>
-          <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')">White</button>
-          <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')">Black</button>
+          <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')" ng-disabled="btnShowStrip">Blue</button>
+          <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')" ng-disabled="btnShowStrip">Red</button>
+          <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')" ng-disabled="btnShowStrip">Yellow</button>
+          <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')" ng-disabled="btnShowStrip">White</button>
+          <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')" ng-disabled="btnShowStrip">Black</button>
           <div class="col-sm-12">
-            <h4>{{btnResponse}}</h4>
+            <h3>{{btnResponse}}</h3>
           </div>
           <div class="col-sm-12" ng-show="btnShowStrip">
             <h4 class="col-sm-12">Color Strip</h4>
@@ -383,12 +395,14 @@ body{    width:900px;
 
             <!--ON THE SUBJECT OF PASSWORD-->   
         <hr class="col-sm-12">
+       <br />
+        <div class="col-sm-12">
         <h2>On the Subject of Passwords</h2>
         <div>
             <h4>First Position Options:</h4> 
             <input type = "text"; ng-model="serial" ng-blur="passwordSerial()">
         </div>
-
+    </div>
 
     </div>
 
