@@ -330,81 +330,115 @@ body{    width:900px;
                 }
             }
         }
-        
+        $scope.advancedWireResult = "---"
         $scope.addComplexWire = function()
         {
+            var lastDigitSerial = Number($scope.serial.slice(-1))%2; console.log(lastDigitSerial);
             var wireNum = 0;
             if ($scope.redWire)
             {
-                wireNum+=1000
+                wireNum+=8
             }
             if ($scope.blueWire)
             {
-                wireNum+=100
+                wireNum+=4
             }
             if ($scope.starWire)
             {
-                wireNum+=10
+                wireNum+=2
             }
             if ($scope.ledWire)
             {
                 wireNum+=1
             }
+           switch (wireNum) {
+            case 0:
+                $scope.advancedWireResult = "CUT";
+                break;
+            case 1:
+                $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 2:
+                $scope.advancedWireResult = "CUT";
+                break;
+            case 3:
+                if($scope.batteries>=2)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+                break;
+            case 4:
+                if(lastDigitSerial==0)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 5:
+                if($scope.parallelPort)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 6:
+                $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 7:
+                if($scope.parallelPort)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 8:
+                if(lastDigitSerial==0)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+                break;
+            case 9:
+                if($scope.batteries>=2)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 10:
+                $scope.advancedWireResult = "CUT";
+                break;
+            case 11:
+                if($scope.batteries>=2)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 12:
+                if(lastDigitSerial==0)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+                break;
+            case 13:
+                if(lastDigitSerial==0)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+                break;
+            case 14:
+                if($scope.parallelPort)
+                    $scope.advancedWireResult = "CUT";
+                else 
+                    $scope.advancedWireResult = "DON'T CUT";
+                break;
+            case 15:
+                $scope.advancedWireResult = "DON'T CUT";
+                break;
+            }
             $scope.redWire = false;
             $scope.blueWire = false;
             $scope.starWire = false;
             $scope.ledWire = false;
-
-           switch (wireNum) {
-            case 0000:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0001:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0010:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0011:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0100:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0101:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0110:
-                $scope.advancedWireResult = "";;
-                break;
-            case 0111:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1000:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1001:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1010:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1011:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1100:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1101:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1110:
-                $scope.advancedWireResult = "";;
-                break;
-            case 1111:
-                $scope.advancedWireResult = "";;
-                break;
-            }
         }
 
 
@@ -438,6 +472,9 @@ body{    width:900px;
         <h4>Batteries</h4>
         <input type="number" min="0" max="4" step="1" ng-model="batteries"/>
         <br />
+        <h4> Parallel Port?</h4>
+        <input type="checkbox" ng-model="parallelPort">
+        <br />
         <h4>Indicators</h4>
         <h5 class="col-sm-12" ng-repeat="x in litInd track by $index">
             {{x}} isLIT: {{litIndLit[$index]}}
@@ -447,7 +484,7 @@ body{    width:900px;
         <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="indicatorIN.length < 3">Add Indicator</button>
     </div>
 
-        <div ><!--ng-hide="litIndLit.length==0 || !serial">
+        <div ng-hide="litIndLit.length==0 || !serial">
 
             <!--ON THE SUBJECT OF WIRES-->
             <hr class="col-md-12">
@@ -618,7 +655,7 @@ body{    width:900px;
                     <input type="checkbox" ng-model="ledWire">
                 </div>
                 <button type="button" class="btn btn-primary" ng-click="addComplexWire()" class='col-md-12'>Add Wire</button>
-                <h3 class="col-md-12">CUT: {{basicWireMSG}}</h3> 
+                <h3 class="col-md-12">{{advancedWireResult}}</h3> 
                 <ul class="col-md-3" style="list-style-type:none">
                     <li ng-repeat="value in basicWires track by $index" class="col-md-12">
                         <span ng-if="value=='Red'" class="btn-danger col-md-12">
