@@ -259,9 +259,45 @@ body{    width:900px;
         'point','right','small','sound','spell','still','study','their','there',
         'these','things','think','three','water','where','which','world','would',
         'write']
-        
+        $('#filterChar1').keyup(function() {
+            $scope.passes=$('#passUL li');
+            var re1 = new RegExp ("("+$(this).val().split('').join('|')+").(.*).(.*).(.*).(.*)", "i");
+            $scope.passes.show().filter(function(){ return !re1.test($(this).text());}).hide();
+        }); 
+        $('#filterChar2').keyup(function() {
+            $scope.passes=$('#passUL li');
+            var re2 = new RegExp ("("+$('#filterChar1').val().split('').join("|")+")("+$(this).val().split("").join("|")+").(.*).(.*).(.*)", "i"); console.log(re2);
+            $scope.passes.show().filter(function(){ return !re2.test($(this).text());}).hide();
+        }); 
+        $('#filterChar3').keyup(function() {
+            $scope.passes=$('#passUL li');
+            var re3 = new RegExp ("("+$('#filterChar1').val().split("").join("|")+")("+$('#filterChar2').val().split("").join("|")+")("+$(this).val().split("").join("|")+").(.*).(.*)", "i");
+            $scope.passes.show().filter(function(){ return !re3.test($(this).text());}).hide();
+        }); 
+        $('#filterChar4').keyup(function() {
+            $scope.passes=$('#passUL li');
+            var re4 = new RegExp ("("+$('#filterChar1').val().split("").join("|")+")("+$('#filterChar2').val().split("").join("|")+")("+$('#filterChar3').val().split("").join("|")+")("+$(this).val().split("").join("|")+").(.*)", "i");
+            $scope.passes.show().filter(function(){ return !re4.test($(this).text());}).hide();
+        }); 
+        $('#filterChar5').keyup(function() {
+            $scope.passes=$('#passUL li');
+            var re5 = new RegExp ("("+$('#filterChar1').val().split("").join("|")+")("+$('#filterChar2').val().split("").join("|")+")("+$('#filterChar3').val().split("").join("|")+")("+$('#filterChar4').val().split("").join("|")+")("+$(this).val().split("").join("|")+")", "i");
+            $scope.passes.show().filter(function(){ return !re5.test($(this).text());}).hide();
+        }); 
     });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -397,15 +433,39 @@ body{    width:900px;
         <hr class="col-sm-12">
        <br />
         <div class="col-sm-12">
-        <h2>On the Subject of Passwords</h2>
-        <div>
-            <h4>First Position Options:</h4> 
-            <input type = "text"; ng-model="serial" ng-blur="passwordSerial()">
+            <h2>On the Subject of Passwords</h2>
+            <div>
+                <div  class="col-md-4">
+                    <h4>First Position Options:</h4> 
+                    <input id="filterChar1" type = "text"; ng-model="serial1" ng-blur="passwordSerial()">
+                </div>
+                <div  class="col-md-4">
+                    <h4>Second Position Options:</h4> 
+                    <input id="filterChar2" type = "text"; ng-model="serial2"  ng-disabled="!serial1" ng-blur="passwordSerial()">
+                </div>
+                <div  class="col-md-4">
+                    <h4>Third Position Options:</h4> 
+                    <input id="filterChar3" type = "text"; ng-model="serial3" ng-disabled="!serial2" ng-blur="passwordSerial()">
+                </div>
+                <div  class="col-md-4">
+                    <h4>Fourth Position Options:</h4> 
+                    <input id="filterChar4" type = "text"; ng-model="serial4" ng-disabled="!serial3" ng-blur="passwordSerial()">
+                </div>
+                <div  class="col-md-4">
+                    <h4>Ffith Position Options:</h4> 
+                    <input id="filterChar5" type = "text"; ng-model="serial5" ng-disabled="!serial4" ng-blur="passwordSerial()">
+                </div>
+                <ul class="col-md-12" id="passUL" style="list-style-type:none">
+                    <li ng-repeat="value in passList" class="col-md-3">
+                        {{value}}
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
     </div>
-
+<footer style="height:1000px">
+</footer>
 </body>
 </html>
 
