@@ -20,7 +20,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
 
     //GET CHAMPIONS
-    $http.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
+    $https.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
     	console.log($scope.championsArray);
@@ -28,7 +28,7 @@ app.controller("ctrlIt", function($scope,$http) {
     });
 
     //GET ITEMS
-    $http.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
+    $https.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
     	console.log($scope.allItems);
     	$scope.getItems();
