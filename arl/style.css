@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Libre+Baskerville');
+body{
+	background-color:#000;
+}
+h1{
+	font-size:300%;
+	margin:0px;
+}
+h3{
+	margin:0px
+}
+a{
+	cursor:pointer;
+}
+a:hover{
+	color:#ff0;
+}
+a:active{
+	color:#fff;
+}
+header{
+	color:#fff;
+	height:75px;
+}
+.wrapIt{
+	max-width:1215px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.item {
+	border-radius:10px;
+	border-style:solid;
+	border-width:1px;
+	border-color:#fff;
+	margin-left:5px;
+	margin-right:5px;
+}
+.item:hover {
+	border-radius:10px;
+	border-style:solid;
+	border-width:1px;
+	border-color:#ff0;
+}
+.itemContainer{
+	float:left;
+}
+.champImg{
+	background-repeat:no-repeat;
+	height:717px;
+	width:100%;
+	border-radius:10px;
+
+}
+.overlay{
+	position:absolute;
+	bottom:125px;
+	height:350px;
+	max-width:1220px;
+	width:100%;
+	background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+	background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+	background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 );
+
+}
+.build{
+	width:100%;
+	color:#fff;
+	margin-left:20px;
+	position: absolute; 
+	bottom: 175px;
+	font-family: 'EB Garamond', serif;
+	font-family: 'Libre Baskerville', serif;
+}
+.infoArea{
+	width:35%;
+	background-color:#000;
+	height:400px;
+	top:50px;
+	border:solid;
+	border-width:1px;
+	border-color:#fff;
+	opacity:.4;
+}
+ul{
+	list-style:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.itemTipWrap:hover .arrow_box {
+    visibility: visible;
+}
+.itemTipWrap .arrow_box {
+	visibility:hidden;
+    height:100px;
+    width:50px;
+    background-color:red;
+}
