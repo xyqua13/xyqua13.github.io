@@ -14,13 +14,13 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
     //var api_key = "86781244-33e9-4829-ba9a-7b968be0cf6d";
-    var getImg = 'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/';
-    var getImgShort = 'http://ddragon.leagueoflegends.com/cdn/img/';
-    var getChampSplash = 'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/'
+    var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
+    var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
+    var getChampSplash = '//ddragon.leagueoflegends.com/cdn/img/champion/splash/'
 
 
     //GET CHAMPIONS
-    $https.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
+    $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
     	console.log($scope.championsArray);
@@ -28,7 +28,7 @@ app.controller("ctrlIt", function($scope,$http) {
     });
 
     //GET ITEMS
-    $https.get('http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
+    $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
     	console.log($scope.allItems);
     	$scope.getItems();
