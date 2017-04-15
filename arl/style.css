@@ -32,6 +32,9 @@ header{
 	height:717px;
 	width:100%;
 	border-radius:10px;
+	background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
 
 }
 
