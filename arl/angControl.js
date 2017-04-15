@@ -115,7 +115,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	}
 	    }
 	    //FIND TRINKET
-	    while($scope.trink=="")
+	    while($scope.items.length < 7)
 	    {
 	    	randNum = Math.floor(Math.random() * 2999)+1000;
 	    	hId=$scope.allItems.data[randNum];
@@ -132,7 +132,6 @@ app.controller("ctrlIt", function($scope,$http) {
 			    		hItem.desc=hId.description;
 			    		$scope.items.push(hItem);
 			    		console.log($scope.items);
-			    		$scope.trink="true";
 	    	 		}
 	    	 	}
 			}
