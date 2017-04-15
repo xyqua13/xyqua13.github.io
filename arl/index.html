@@ -2,15 +2,16 @@
 <html>
 	<head>
 	 	<link rel="stylesheet" href="style.css">
+	 	<link rel="stylesheet" href="../lib/css/bootstrap.css">
 		<script src="../lib/js/angular.min.js"></script>
 		<script src="../lib/js/jquery-3.1.1.min.js"></script>
+		<script src="../lib/js/bootstrap.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.4/angular-sanitize.js"></script>
 		<script src="angControl.js"></script>
 	<head>
 	<body>
-
 		<div ng-app="ARL" ng-controller="ctrlIt">
-			<div class="wrapIt">
+			<div class="body" id="body">
 				<header>
 					<h1>AllRandom.lol</h1>
 				</header>
@@ -21,37 +22,30 @@
 				</div>
 
 				<div class="build">
-				    <h1>{{champName}}</h1>
-				    <h3>{{champTitle}}</h3>
+					<div class="champInfo">
+					    <h1>{{champName}}</h1>
+					    <h3>{{champTitle}}</h3>
+					</div>
 				    <br />
-				    <h3>Your Build:</h3>
-				    <div class="infoArea">
-				    	<div class="fullBuild">
-
-				    	</div>
-				    	<div class="itemDetails">
-				    	</div>
-				    </div>
-				    <ul>
-				    	<li ng-repeat="n in items track by $index" class="itemContainer">
-				    		<div class="itemTipWrap">
+				    <div class="buildInfo col-xs-12 col-md-12 col-lg-12">
+					    <h3 class="col-xs-12 col-md-12 col-lg-12">Your Build:</h3>
+					    <ul class="col-xs-12 col-md-12 col-lg-12">
+					    	<li ng-repeat="n in items track by $index" class="itemContainer">
 				   				<img class="item" src='{{n.icon}}' id="item{{$index}}" title="words"\>
 				   				<span class="arrow_box">{{n.id}}</span>
-				   			</div>	
-				   		</li>
-				   	</ul>
-				   	<br />
-				   	<br />
-					<br />
-					<br />
-					<br />
-
-				   	<a class="changeChampion" ng-click="getChamp()">-New Champion-</a>
-				   	<a class="changeChampion" ng-click="getItems()">-New Build-</a>
-				   	<a class="changeChampion" ng-click="getChamp();getItems();">-NOPE!-</a>
+					   		</li>
+					   	</ul>
+				   	</div>
+			   	</div>
+			   	<div class="remakeBtns col-xs-12 col-md-12 col-lg-12">
+				   	<a class="changeChampion btn btn-primary col-xs-12 col-md-4 col-lg-4" ng-click="getChamp()">-New Champion-</a>
+				   	<a class="changeChampion btn btn-primary col-xs-12 col-md-4 col-lg-4" ng-click="getItems()">-New Build-</a>
+				   	<a class="changeChampion btn btn-primary col-xs-12 col-md-4 col-lg-4" ng-click="getChamp();getItems();">-NOPE!-</a>
 			   	</div>
 		   	</div>
 		</div>
-		
+		<footer>
+		<p>This is where the footer is</p>
+		</footer>
 	</body>
 </html>

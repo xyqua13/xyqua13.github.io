@@ -132,10 +132,6 @@ app.controller("ctrlIt", function($scope,$http) {
 			    		hItem.desc=hId.description;
 			    		$scope.items.push(hItem);
 			    		console.log($scope.items);
-	    	 			console.log("TRINKET FOUND");
-	    	 			$scope.trink=getImg+'item/'+hId.image.full;
-			    		console.log("TRINK");
-			    		console.log($scope.trink);
 	    	 		}
 	    	 	}
 			}
