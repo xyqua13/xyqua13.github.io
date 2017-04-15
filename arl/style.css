@@ -67,6 +67,7 @@ header{
 
 }
 .build{
+	z-index:10;
 	width:100%;
 	color:#fff;
 	margin-left:20px;
@@ -74,16 +75,6 @@ header{
 	bottom: 175px;
 	font-family: 'EB Garamond', serif;
 	font-family: 'Libre Baskerville', serif;
-}
-.infoArea{
-	width:35%;
-	background-color:#000;
-	height:400px;
-	top:50px;
-	border:solid;
-	border-width:1px;
-	border-color:#fff;
-	opacity:.4;
 }
 ul{
 	list-style:none;
