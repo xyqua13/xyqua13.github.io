@@ -132,6 +132,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			    		hItem.desc=hId.description;
 			    		$scope.items.push(hItem);
 			    		console.log($scope.items);
+			    		i=5000;
 	    	 		}
 	    	 	}
 			}
