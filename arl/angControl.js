@@ -57,7 +57,8 @@ app.controller("ctrlIt", function($scope,$http) {
 	    			for(var k = 0; k < hId.modes.length;i++){
 	    				if(hId.modes[i]=="CLASSIC"){
 	    					modeCheck=true;
-	    					$scope.selectedSummoners.push(hId);
+	    					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.img.full}
+	    					$scope.selectedSummoners.push(holdSum);
 	    					console.log($scope.selectedSummoners);
 	    				}
 	    			}
