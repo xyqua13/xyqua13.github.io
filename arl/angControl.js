@@ -87,7 +87,17 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		$scope.champTitle = hId.title;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
-	    		window.history.pushState("", "", "/arl/index" );
+	    		window.history.pushState("", "", "/arl/" );
+
+
+
+
+
+
+	    		allDoneSum=true;
+			    allDoneBuild=true;
+			    allDoneChamps=true;
+			    $scope.stringBuild();
 			}else{
 				$scope.getChamp();
 				$scope.getSummoners();
