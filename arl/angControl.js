@@ -308,9 +308,9 @@ app.controller("ctrlIt", function($scope,$http) {
 			//jQuery('.loader').hide();
 			$scope.prevBuild();
 			window.history.pushState("", "", "/arl/" );
-			var allDoneSum=false;
-		    var allDoneBuild=false;
-		    var allDoneChamps=false;
+			allDoneSum=false;
+		    allDoneBuild=false;
+		    allDoneChamps=false;
     	}
     }
 
