@@ -91,7 +91,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
 	    		window.history.pushState("", "", "/arl/" );
 	    		for(i=1;i<7;i++){
-	    			hItem.id=pareseInt(buildParamArray[i],16);
+	    			hItem.id=parseInt(buildParamArray[i],16);
 	    			hId=$scope.allItems.data[hItem.id];
 		    		hItem.name=hId.name;
 		    		hItem.icon=getImg+'item/'+hId.image.full;
