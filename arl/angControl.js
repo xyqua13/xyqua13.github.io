@@ -306,6 +306,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
+			$scope.prevBuild();
     	}
     }
 
