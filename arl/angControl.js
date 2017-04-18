@@ -70,10 +70,16 @@ app.controller("ctrlIt", function($scope,$http) {
 
 	function checkBuild(){
 		if(allDataSum&&allDataItems&&allDataChamps){
+			var buildParam = getParameterByName("b");
 			console.log(getParameterByName("b"));
-			$scope.getChamp();
-			$scope.getSummoners();
-			$scope.getItems();
+			if(buildParam!=null){
+				buildParamArray=buildParam.split("l");
+				console.log(buildParamArray);
+			}//else{
+				$scope.getChamp();
+				$scope.getSummoners();
+				$scope.getItems();
+			//}
 		}
 	}
 
