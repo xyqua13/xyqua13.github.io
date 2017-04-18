@@ -61,7 +61,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
     		modeCheck=false;
     		count=0;
-    		console.log(hid);
+    		console.log(hId);
     		while(!modeCheck&&count<50){
     			for(var i = 0; i < hId.modes.length;i++){
     				if(hId.modes[i]=="CLASSIC"){
