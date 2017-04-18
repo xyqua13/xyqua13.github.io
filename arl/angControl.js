@@ -80,14 +80,14 @@ app.controller("ctrlIt", function($scope,$http) {
 				hId=$scope.allChampions.data[$scope.championsArray[buildParamArray[0]]];
 				$scope.champName=hId.name;
 	    		$scope.champId=hId.key;
-	    		$scope.champArrayId=randNum;
+	    		$scope.champArrayId=buildParamArray[0];
 	    		$scope.champImgIcon=getImg+'champion/'+hId.image.full;
 	    		$scope.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
 	    		$scope.champBGImage = getChampSplash +hId.id+'_0.jpg';
 	    		$scope.champTitle = hId.title;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
-
+	    		window.history.pushState("", "", "/" )
 			}//else{
 				$scope.getChamp();
 				$scope.getSummoners();
