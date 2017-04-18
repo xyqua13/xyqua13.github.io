@@ -15,7 +15,11 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.selectedSummoners=[];
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
+    $scope.buildString="";
 
+    var allDoneSum=false;
+    var allDoneBuild=false;
+    var allDoneChamps=false;
 
     var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
@@ -49,7 +53,8 @@ app.controller("ctrlIt", function($scope,$http) {
 
 
     $scope.getSummoners = function(){
-    	$scope.selectedSummoners=[]
+    	allDoneSum=false;
+    	$scope.selectedSummoners=[];
     	var modeCheck=false;
     	while($scope.selectedSummoners.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
@@ -71,9 +76,12 @@ app.controller("ctrlIt", function($scope,$http) {
 
 	    	}
     	}
+    	allDoneSum=true;
+    	stringBuild();
     }
     $scope.getChamp = function(){
     	//console.log("GET CHAMP");
+    	allDoneChamps=false;
     	$scope.champId=-1;
 	    while($scope.champId==-1){
 	    	randNum = Math.floor(Math.random() * $scope.championsArray.length);
@@ -90,8 +98,11 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		//console.log(hId);
 	    	}
 	    }
+	    allDoneChamps=true;
+    	stringBuild();
 	}
 	$scope.getItems = function(){
+		allDoneBuild=false;
 		$scope.items=[];
     	$scope.trink="";
 		while($scope.items.length<1)
@@ -174,9 +185,22 @@ app.controller("ctrlIt", function($scope,$http) {
 			}
 		}
 	    //console.log($scope.allItems.data);
+	    allDoneBuild=true;
+    	stringBuild();
 	}
 
-    $scope.randChamp = function(){
-    	return "THIS";
+    $scope.stringBuild = function(){
+    	if(allDoneBuild&&allDoneChamps&&allDoneSum){
+    		var string="";
+    		console.log(champId);
+    		for(i=0;i<$scope.items.length;i++)
+    		{
+    			console.log($scope.items[i]);
+    		}
+    		for(i=0;i<2;i++)
+    		{
+    			console.log($scope.selectedSummoners[i]);
+    		}
+    	}
     }
 });
