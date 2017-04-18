@@ -20,7 +20,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.buildString="";
 
 
-    $scope.cb = {c:{},i:[],s:[]}
+    $scope.cb = {c:{},i:[],s:[]};
     //cb=current build
     //c=champion
     //i=items
@@ -183,7 +183,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		ch.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
 	    		ch.champBGImage = getChampSplash +hId.id+'_0.jpg';
 	    		ch.champTitle = hId.title;
-	    		cb.c=ch;
+	    		$scope.cb.c=ch;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 	    		//console.log(hId);
