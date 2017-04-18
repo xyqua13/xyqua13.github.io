@@ -47,6 +47,7 @@ app.controller("ctrlIt", function($scope,$http) {
     //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
     $scope.getSummoners = function(){
     	console.log("summoners got");
+    	$scoep.selectedSummoners=[]
     	while($scope.selectedSummoners.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
