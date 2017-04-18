@@ -172,7 +172,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		ch.champTitle = hId.title;
 	    		$scope.cb.c=ch;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
-	    		jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
+	    		jQuery('.champImg').css('background-image','url('+ch.champBGImage+')');
 	    		//console.log(hId);
 	    	}
 	    }
