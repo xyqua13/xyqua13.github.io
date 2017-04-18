@@ -124,13 +124,13 @@ app.controller("ctrlIt", function($scope,$http) {
     		hItem.name=hId.name;
     		hItem.icon=getImg+'item/'+hId.image.full;
     		hItem.desc=hId.description;
-    		$scope.h.i.push(hItem);
+    		h.i.push(hItem);
 		}
 		for(var i = 8; i < 10;i++){
 			var id=buildParamArray[i];
 			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
 			var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":id};
-			$scope.h.s.push(holdSum);
+			h.s.push(holdSum);
 			//console.log($scope.selectedSummoners);
 		}
 		return h;
