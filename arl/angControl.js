@@ -52,14 +52,16 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
 	    	{
 	    		var modeCheck=false;
-	    		while(!modeCheck){
-	    			for(var i = 0; i < hId.modes.length;i++){
+	    		count=0;
+	    		while(!modeCheck&&count<50){
+	    			for(var k = 0; k < hId.modes.length;i++){
 	    				if(hId.modes[i]=="CLASSIC"){
 	    					modeCheck=true;
 	    					$scope.selectedSummoners.push(hId);
 	    					console.log($scope.selectedSummoners);
 	    				}
 	    			}
+	    			count++;
 	    		}
 
 	    	}
