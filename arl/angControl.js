@@ -192,7 +192,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string="";
-    		console.log(champId);
+    		console.log($scope.champId);
     		for(i=0;i<$scope.items.length;i++)
     		{
     			console.log($scope.items[i]);
