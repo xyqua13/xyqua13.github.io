@@ -26,33 +26,36 @@ app.controller("ctrlIt", function($scope,$http) {
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
-    	console.log($scope.championsArray);
+    	//console.log($scope.championsArray);
     	$scope.getChamp();
     });
 
     //GET ITEMS
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
-    	console.log($scope.allItems);
+    	//console.log($scope.allItems);
     	$scope.getItems();
     });
     //GET Summoners
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/summoner.json').then(function(response){
     	$scope.allSummoners = response.data;
-    	console.log($scope.allSummoners);
+    	//console.log($scope.allSummoners);
     	$scope.summonersArray = Object.keys($scope.allSummoners.data);
-    	console.log($scope.summonersArray);
+    	//console.log($scope.summonersArray);
     	$scope.getSummoners();
     });
-    //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
+
+
+
+
     $scope.getSummoners = function(){
-    	console.log("summoners got");
     	$scoep.selectedSummoners=[]
+    	var modeCheck=false;
     	while($scope.selectedSummoners.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
 	    	{
-	    		var modeCheck=false;
+	    		modeCheck=false;
 	    		count=0;
 	    		while(!modeCheck&&count<50){
 	    			for(var i = 0; i < hId.modes.length;i++){
@@ -60,7 +63,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    					modeCheck=true;
 	    					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full}
 	    					$scope.selectedSummoners.push(holdSum);
-	    					console.log($scope.selectedSummoners);
+	    					//console.log($scope.selectedSummoners);
 	    				}
 	    			}
 	    			count++;
@@ -70,7 +73,7 @@ app.controller("ctrlIt", function($scope,$http) {
     	}
     }
     $scope.getChamp = function(){
-    	console.log("GET CHAMP");
+    	//console.log("GET CHAMP");
     	$scope.champId=-1;
 	    while($scope.champId==-1){
 	    	randNum = Math.floor(Math.random() * $scope.championsArray.length);
@@ -84,7 +87,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		$scope.champTitle = hId.title;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
-	    		console.log(hId);
+	    		//console.log(hId);
 	    	}
 	    }
 	}
@@ -93,7 +96,7 @@ app.controller("ctrlIt", function($scope,$http) {
     	$scope.trink="";
 		while($scope.items.length<1)
 	    {
-	    	console.log($scope.items.length);
+	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
 	    	hId=$scope.allItems.data[randNum];
 	    	var hItem={};
@@ -102,13 +105,13 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	{
 	    	 		if(hId.tags[i]=="Boots"&& hId.maps[11] && hId.into.length<7)
 	    	 		{
-	    	 			console.log(hId);
+	    	 			//console.log(hId);
 			    		hItem.id=randNum;
 			    		hItem.name=hId;
 			    		hItem.icon=getImg+'item/'+hId.image.full;
 			    		hItem.desc=hId.description;
 			    		$scope.items.push(hItem);
-			    		console.log($scope.items);
+			    		//console.log($scope.items);
 	    	 		}
 	    	 	}
 			}
@@ -137,13 +140,13 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 		}
 	    	 	}
 	    		if($scope.items.length < 6 && hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
-		    		console.log(hId);
+		    		//console.log(hId);
 		    		hItem.id=randNum;
 		    		hItem.name=hId;
 		    		hItem.icon=getImg+'item/'+hId.image.full;
 		    		hItem.desc=hId.description;
 		    		$scope.items.push(hItem);
-		    		console.log($scope.items);
+		    		//console.log($scope.items);
 		    	}
 	    	}
 	    }
@@ -158,23 +161,22 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	{
 	    	 		if(hId.tags[i]=="Trinket"&& hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && hId.tags.length!=0 && typeof hId.inStore == 'undefined')
 	    	 		{
-	    	 			console.log(hId);
+	    	 			//console.log(hId);
 			    		hItem.id=randNum;
 			    		hItem.name=hId;
 			    		hItem.icon=getImg+'item/'+hId.image.full;
 			    		hItem.desc=hId.description;
 			    		$scope.items.push(hItem);
-			    		console.log($scope.items);
+			    		//console.log($scope.items);
 			    		i=5000;
 	    	 		}
 	    	 	}
 			}
 		}
-	    console.log($scope.allItems.data);
+	    //console.log($scope.allItems.data);
 	}
 
     $scope.randChamp = function(){
-
     	return "THIS";
     }
 });
