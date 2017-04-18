@@ -59,22 +59,20 @@ app.controller("ctrlIt", function($scope,$http) {
     	while($scope.selectedSummoners.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
-	    	{
-	    		modeCheck=false;
-	    		count=0;
-	    		while(!modeCheck&&count<50){
-	    			for(var i = 0; i < hId.modes.length;i++){
-	    				if(hId.modes[i]=="CLASSIC"){
-	    					modeCheck=true;
-	    					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full}
-	    					$scope.selectedSummoners.push(holdSum);
-	    					//console.log($scope.selectedSummoners);
-	    				}
-	    			}
-	    			count++;
-	    		}
-
-	    	}
+    		modeCheck=false;
+    		count=0;
+    		console.log(hid);
+    		while(!modeCheck&&count<50){
+    			for(var i = 0; i < hId.modes.length;i++){
+    				if(hId.modes[i]=="CLASSIC"){
+    					modeCheck=true;
+    					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full}
+    					$scope.selectedSummoners.push(holdSum);
+    					//console.log($scope.selectedSummoners);
+    				}
+    			}
+    			count++;
+    		}
     	}
     	allDoneSum=true;
     	$scope.stringBuild();
@@ -192,10 +190,10 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string="";
-    		console.log($scope.champId);
+    		console.log($scope.champId.toString(16));
     		for(i=0;i<$scope.items.length;i++)
     		{
-    			console.log($scope.items[i]);
+    			console.log($scope.items[i].id.toString(16));
     		}
     		for(i=0;i<2;i++)
     		{
