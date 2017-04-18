@@ -84,6 +84,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		allDoneSum=true;
 			    allDoneBuild=true;
 			    allDoneChamps=true;
+			    jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 			    $scope.stringBuild();
 			}else{
 				$scope.getChamp();
@@ -109,7 +110,6 @@ app.controller("ctrlIt", function($scope,$http) {
 		ch.champTitle = hId.title;
 		h.c=ch;
 		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
-		jQuery('.champImg').css('background-image','url('+ch.champBGImage+')');
 		for(i=1;i<8;i++){
 			hItem={};
 			hItem.id=parseInt(buildParamArray[i],16);
@@ -305,7 +305,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
-			//$scope.prevBuild();
+			$scope.prevBuild();
 			window.history.pushState("", "", "/arl/" );
     	}
     }
