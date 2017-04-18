@@ -19,6 +19,16 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgSprite = "";
     $scope.buildString="";
 
+
+    $scope.cb = {c:{},i:[],s:[]}
+    //cb=current build
+    //c=champion
+    //i=items
+    //s=summoners
+    //dataContainer
+    //{champ:{},items:[{id:123,name:boots,ect},{}],sum:[]}
+
+
     var allDoneSum=false;
     var allDoneBuild=false;
     var allDoneChamps=false;
@@ -133,9 +143,9 @@ app.controller("ctrlIt", function($scope,$http) {
 
     $scope.getSummoners = function(){
     	allDoneSum=false;
-    	$scope.selectedSummoners=[];
+    	$scope.cb.s=[];
     	var modeCheck=false;
-    	while($scope.selectedSummoners.length<2){
+    	while($scope.cb.s.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
     		modeCheck=false;
@@ -146,7 +156,7 @@ app.controller("ctrlIt", function($scope,$http) {
     				if(hId.modes[i]=="CLASSIC"){
     					modeCheck=true;
     					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":randNum}
-    					$scope.selectedSummoners.push(holdSum);
+    					$scope.cb.s.push(holdSum);
     					//console.log($scope.selectedSummoners);
     				}
     			}
@@ -159,20 +169,20 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.getChamp = function(){
     	//console.log("GET CHAMP");
     	allDoneChamps=false;
-    	$scope.champId=-1;
-	    while($scope.champId==-1){
+    	$scope.cb.c.champId=-1;
+	    while($scope.cb.c.champId==-1){
 	    	randNum = Math.floor(Math.random() * $scope.championsArray.length);
 	    	hId=$scope.allChampions.data[$scope.championsArray[randNum]];
 	    	if(typeof hId != 'undefined'){
-	    		$scope.champName=hId.name;
-	    		$scope.champId=hId.key;
-	    		$scope.champArrayId=randNum;
-	    		$scope.champImgIcon=getImg+'champion/'+hId.image.full;
-	    		$scope.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
-	    		$scope.champBGImage = getChampSplash +hId.id+'_0.jpg';
-	    		$scope.champTitle = hId.title;
+	    		$scope.cb.c.champName=hId.name;
+	    		$scope.cb.c.champId=hId.key;
+	    		$scope.cb.c.champArrayId=randNum;
+	    		$scope.cb.c.champImgIcon=getImg+'champion/'+hId.image.full;
+	    		$scope.cb.c.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
+	    		$scope.cb.c.champBGImage = getChampSplash +hId.id+'_0.jpg';
+	    		$scope.cb.c.champTitle = hId.title;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
-	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
+	    		jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 	    		//console.log(hId);
 	    	}
 	    }
@@ -181,9 +191,9 @@ app.controller("ctrlIt", function($scope,$http) {
 	}
 	$scope.getItems = function(){
 		allDoneBuild=false;
-		$scope.items=[];
+		$scope.cb.i.items=[];
     	$scope.trink="";
-		while($scope.items.length<1)
+		while($scope.cb.i.length<1)
 	    {
 	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
@@ -199,13 +209,13 @@ app.controller("ctrlIt", function($scope,$http) {
 			    		hItem.name=hId.name;
 			    		hItem.icon=getImg+'item/'+hId.image.full;
 			    		hItem.desc=hId.description;
-			    		$scope.items.push(hItem);
+			    		$scope.cb.i.push(hItem);
 			    		//console.log($scope.items);
 	    	 		}
 	    	 	}
 			}
 		}
-	    while($scope.items.length<6){
+	    while($scope.cb.i.length<6){
 	    	randNum = Math.floor(Math.random() * 999)+3000;
 	    	hId=$scope.allItems.data[randNum];
 	    	var hItem={};
@@ -228,19 +238,19 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 			//isConsume=true;
 	    	 		}
 	    	 	}
-	    		if($scope.items.length < 6 && hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
+	    		if($scope.cb.i.length < 6 && hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
 		    		//console.log(hId);
 		    		hItem.id=randNum;
 		    		hItem.name=hId;
 		    		hItem.icon=getImg+'item/'+hId.image.full;
 		    		hItem.desc=hId.description;
-		    		$scope.items.push(hItem);
+		    		$scope.cb.i.push(hItem);
 		    		//console.log($scope.items);
 		    	}
 	    	}
 	    }
 	    //FIND TRINKET
-	    while($scope.items.length < 7)
+	    while($scope.cb.i.length < 7)
 	    {
 	    	randNum = Math.floor(Math.random() * 2999)+1000;
 	    	hId=$scope.allItems.data[randNum];
@@ -255,7 +265,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			    		hItem.name=hId;
 			    		hItem.icon=getImg+'item/'+hId.image.full;
 			    		hItem.desc=hId.description;
-			    		$scope.items.push(hItem);
+			    		$scope.cb.i.push(hItem);
 			    		//console.log($scope.items);
 			    		i=5000;
 	    	 		}
@@ -270,14 +280,14 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string=window.location.hostname+document.location.pathname+"?b=";
-    		string+=$scope.champArrayId+"l";
-    		for(i=0;i<$scope.items.length;i++)
+    		string+=$scope.cb.c.champArrayId+"l";
+    		for(i=0;i<$scope.cb.i.length;i++)
     		{
-    			string+=$scope.items[i].id.toString(16)+"l";
+    			string+=$scope.cb.i[i].id.toString(16)+"l";
     		}
     		for(i=0;i<2;i++)
     		{
-    			string+=$scope.selectedSummoners[i].id+"l";
+    			string+=$scope.cb.s[i].id+"l";
     		}
     		var d = new Date();
 			string+= d.getTime().toString(16);

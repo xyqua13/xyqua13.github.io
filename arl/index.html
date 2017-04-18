@@ -20,8 +20,8 @@
 					<div class="champImg">
 						<div class="build col-xs-12 col-md-12 col-lg-12">
 							<div class="champInfo">
-							    <h1>{{champName}}</h1>
-							    <h3>{{champTitle}}</h3>
+							    <h1>{{cb.c.champName}}</h1>
+							    <h3>{{cb.c.champTitle}}</h3>
 							</div>
 						    <br />
 						    <input type="text" name="buildString" value="{{buildString}}" style="color:#000" size="50">
@@ -33,7 +33,7 @@
 							   		</li>
 							   	</ul>
 							   	 <ul class="col-xs-12 col-md-12 col-lg-12">
-							    	<li ng-repeat="n in selectedSummoners track by $index" class="itemContainer">
+							    	<li ng-repeat="n in cb.s track by $index" class="itemContainer">
 						   				<img class="item" src='{{n.img}}' id="summoners{{$index}}" title="this"\>
 							   		</li>
 							   	</ul>
