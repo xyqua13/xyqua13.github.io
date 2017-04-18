@@ -110,7 +110,6 @@ app.controller("ctrlIt", function($scope,$http) {
 		h.c=ch;
 		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 		jQuery('.champImg').css('background-image','url('+ch.champBGImage+')');
-		window.history.pushState("", "", "/arl/" );
 		for(i=1;i<8;i++){
 			hItem={};
 			hItem.id=parseInt(buildParamArray[i],16);
@@ -289,7 +288,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			string+= d.getTime().toString(16);
 			$scope.buildString=window.location.hostname+document.location.pathname+"?b="+string;
 
-			/*
+
 			//resets previous build cookies
 			var hd= new Date();
 			hd.setMonth(hd.getMonth() + 1);
@@ -303,10 +302,11 @@ app.controller("ctrlIt", function($scope,$http) {
 				document.cookie = "pb"+i+"="+pb[i-1]+"; expires="+ce+"; path=/";
 			}
 			document.cookie = "pb0="+string+"; expires="+ce+"; path=/";
-	*/
+
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
 			//$scope.prevBuild();
+			window.history.pushState("", "", "/arl/" );
     	}
     }
 
