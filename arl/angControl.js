@@ -307,11 +307,14 @@ app.controller("ctrlIt", function($scope,$http) {
 			//jQuery('.loader').hide();
 			$scope.prevBuild();
 			window.history.pushState("", "", "/arl/" );
+			var allDoneSum=false;
+		    var allDoneBuild=false;
+		    var allDoneChamps=false;
     	}
     }
 
     $scope.prevBuild = function(){
-    	pb=[];
+    	$scope.pb=[];
 		for(i=0;i<5;i++){
 			pb.push(getBuild(getCookie("pb"+i)));
 		}
