@@ -10,10 +10,13 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.items=[];
     $scope.trink="";
     $scope.boots="";
-    $scope.allSummoners
+    $scope.allSummoners="";
+    $scope.summonersArray=[];
+    $scope.selectedSummoners=[];
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
-    //var api_key = "86781244-33e9-4829-ba9a-7b968be0cf6d";
+
+
     var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
     var getChampSplash = '//ddragon.leagueoflegends.com/cdn/img/champion/splash/'
@@ -36,12 +39,30 @@ app.controller("ctrlIt", function($scope,$http) {
     //GET Summoners
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/summoner.json').then(function(response){
     	$scope.allSummoners = response.data;
-    	console.log($scope.allSummoners);
+    	$scope.summonersArray = Object.keys($scope.allSummoners.data);
+    	console.log($scope.summonersArray);
     	$scope.getSummoners();
     });
     //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
     $scope.getSummoners = function(){
     	console.log("summoners got");
+    	while(selectedSummoners.length<2){
+    		andNum = Math.floor(Math.random() * $scope.summonersArray.length);
+	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
+	    	{
+	    		var modeCheck=false;
+	    		while(!modeCheck){
+	    			for(var i = 0; i < summonersArray[randNum].mode.length;i++){
+	    				if(summonersArray[randNum].mode[i]=="CLASSIC"){
+	    					modeCheck=true;
+	    					$scope.selectedSummoners.push(summonersArray[randNum]);
+	    					console.log(selectedSummoners);
+	    				}
+	    			}
+	    		}
+
+	    	}
+    	}
     }
     $scope.getChamp = function(){
     	console.log("GET CHAMP");
