@@ -25,6 +25,9 @@ header{
 	color:#fff;
 	height:75px;
 }
+.loader{
+	display:none;
+}
 .body{
 	max-width:1215px;
 	margin-left:auto;
