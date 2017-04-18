@@ -85,42 +85,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			var buildParam = getParameterByName("b");
 			//console.log(getParameterByName("b"));
 			if(buildParam!=null){
-				hItem={};
-				buildParamArray=buildParam.split("l");
-				//console.log(buildParamArray);
-				//console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
-				hId=$scope.allChampions.data[$scope.championsArray[buildParamArray[0]]];
-				$scope.champName=hId.name;
-	    		$scope.champId=hId.key;
-	    		$scope.champArrayId=buildParamArray[0];
-	    		$scope.champImgIcon=getImg+'champion/'+hId.image.full;
-	    		$scope.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
-	    		$scope.champBGImage = getChampSplash +hId.id+'_0.jpg';
-	    		$scope.champTitle = hId.title;
-	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
-	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
-	    		window.history.pushState("", "", "/arl/" );
-	    		for(i=1;i<8;i++){
-	    			hItem={};
-	    			hItem.id=parseInt(buildParamArray[i],16);
-	    			hId=$scope.allItems.data[hItem.id];
-		    		hItem.name=hId.name;
-		    		hItem.icon=getImg+'item/'+hId.image.full;
-		    		hItem.desc=hId.description;
-		    		$scope.items.push(hItem);
-	    		}
-	    		for(var i = 8; i < 10;i++){
-	    			var id=buildParamArray[i];
-	    			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
-					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":id};
-					$scope.selectedSummoners.push(holdSum);
-					//console.log($scope.selectedSummoners);
-    				}
-    			
-
-
-
-
+				cb=getBuild(buildParam);
 	    		allDoneSum=true;
 			    allDoneBuild=true;
 			    allDoneChamps=true;
@@ -133,7 +98,43 @@ app.controller("ctrlIt", function($scope,$http) {
 		}
 	}
 
-
+	function getBuild(param){
+		var h={c:{},i:[],s:[]};
+		var ch={};
+		hItem={};
+		buildParamArray=param.split("l");
+		//console.log(buildParamArray);
+		//console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
+		hId=$scope.allChampions.data[$scope.championsArray[buildParamArray[0]]];
+		ch.champName=hId.name;
+		ch.champId=hId.key;
+		ch.champArrayId=buildParamArray[0];
+		ch.champImgIcon=getImg+'champion/'+hId.image.full;
+		ch.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
+		ch.champBGImage = getChampSplash +hId.id+'_0.jpg';
+		ch.champTitle = hId.title;
+		h.c=ch;
+		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
+		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
+		window.history.pushState("", "", "/arl/" );
+		for(i=1;i<8;i++){
+			hItem={};
+			hItem.id=parseInt(buildParamArray[i],16);
+			hId=$scope.allItems.data[hItem.id];
+    		hItem.name=hId.name;
+    		hItem.icon=getImg+'item/'+hId.image.full;
+    		hItem.desc=hId.description;
+    		$scope.h.i.push(hItem);
+		}
+		for(var i = 8; i < 10;i++){
+			var id=buildParamArray[i];
+			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
+			var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":id};
+			$scope.h.s.push(holdSum);
+			//console.log($scope.selectedSummoners);
+		}
+		return h;
+	}
 
 
 
@@ -174,13 +175,15 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	randNum = Math.floor(Math.random() * $scope.championsArray.length);
 	    	hId=$scope.allChampions.data[$scope.championsArray[randNum]];
 	    	if(typeof hId != 'undefined'){
-	    		$scope.cb.c.champName=hId.name;
-	    		$scope.cb.c.champId=hId.key;
-	    		$scope.cb.c.champArrayId=randNum;
-	    		$scope.cb.c.champImgIcon=getImg+'champion/'+hId.image.full;
-	    		$scope.cb.c.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
-	    		$scope.cb.c.champBGImage = getChampSplash +hId.id+'_0.jpg';
-	    		$scope.cb.c.champTitle = hId.title;
+	    		var ch={};
+	    		ch.champName=hId.name;
+	    		ch.champId=hId.key;
+	    		ch.champArrayId=randNum;
+	    		ch.champImgIcon=getImg+'champion/'+hId.image.full;
+	    		ch.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
+	    		ch.champBGImage = getChampSplash +hId.id+'_0.jpg';
+	    		ch.champTitle = hId.title;
+	    		cb.c=ch;
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 	    		//console.log(hId);
