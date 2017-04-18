@@ -90,7 +90,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
 	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
 	    		window.history.pushState("", "", "/arl/" );
-	    		for(i=1;i<7;i++){
+	    		for(i=1;i<8;i++){
 	    			hItem={};
 	    			hItem.id=parseInt(buildParamArray[i],16);
 	    			hId=$scope.allItems.data[hItem.id];
@@ -99,7 +99,14 @@ app.controller("ctrlIt", function($scope,$http) {
 		    		hItem.desc=hId.description;
 		    		$scope.items.push(hItem);
 	    		}
-
+	    		for(var i = 8; i < 10;i++){
+	    			var id=parseInt(buildParamArray[i],16);
+	    			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
+					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":randNum}
+					$scope.selectedSummoners.push(holdSum);
+					//console.log($scope.selectedSummoners);
+    				}
+    			}
 
 
 
