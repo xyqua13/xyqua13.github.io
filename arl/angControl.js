@@ -75,6 +75,8 @@ app.controller("ctrlIt", function($scope,$http) {
 			if(buildParam!=null){
 				buildParamArray=buildParam.split("l");
 				console.log(buildParamArray);
+				console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
+				
 			}//else{
 				$scope.getChamp();
 				$scope.getSummoners();
