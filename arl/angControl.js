@@ -289,7 +289,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
-    		var string="?b=";
+    		var string="";
     		string+=$scope.cb.c.champArrayId+"l";
     		for(i=0;i<$scope.cb.i.length;i++)
     		{
@@ -301,7 +301,7 @@ app.controller("ctrlIt", function($scope,$http) {
     		}
     		var d = new Date();
 			string+= d.getTime().toString(16);
-			$scope.buildString=window.location.hostname+document.location.pathname+string;
+			$scope.buildString=window.location.hostname+document.location.pathname+"?b="+string;
 
 
 			var hd= new Date();
