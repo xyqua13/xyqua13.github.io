@@ -35,7 +35,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
-    	console.log($scope.championsArray);
+    	//console.log($scope.championsArray);
     	allDataChamps=true;
     	checkBuild();
     });
@@ -73,11 +73,11 @@ app.controller("ctrlIt", function($scope,$http) {
 	function checkBuild(){
 		if(allDataSum&&allDataItems&&allDataChamps){
 			var buildParam = getParameterByName("b");
-			console.log(getParameterByName("b"));
+			//console.log(getParameterByName("b"));
 			if(buildParam!=null){
 				hItem={};
 				buildParamArray=buildParam.split("l");
-				console.log(buildParamArray);
+				//console.log(buildParamArray);
 				//console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
 				hId=$scope.allChampions.data[$scope.championsArray[buildParamArray[0]]];
 				$scope.champName=hId.name;
@@ -269,7 +269,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
-    		var string=window.location.href+"?b=";
+    		var string=window.location.hostname+document.location.pathname+"?b=";
     		string+=$scope.champArrayId+"l";
     		for(i=0;i<$scope.items.length;i++)
     		{
