@@ -116,7 +116,7 @@ app.controller("ctrlIt", function($scope,$http) {
 		ch.champTitle = hId.title;
 		h.c=ch;
 		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
-		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
+		jQuery('.champImg').css('background-image','url('+ch.champBGImage+')');
 		window.history.pushState("", "", "/arl/" );
 		for(i=1;i<8;i++){
 			hItem={};
