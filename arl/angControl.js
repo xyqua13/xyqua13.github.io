@@ -54,7 +54,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		var modeCheck=false;
 	    		while(!modeCheck){
 	    			for(var i = 0; i < hId.mode.length;i++){
-	    				if(hId.mode[i]=="CLASSIC"){
+	    				if(hId.modes[i]=="CLASSIC"){
 	    					modeCheck=true;
 	    					$scope.selectedSummoners.push(hId);
 	    					console.log($scope.selectedSummoners);
