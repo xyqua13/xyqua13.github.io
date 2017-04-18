@@ -252,7 +252,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
-    		var string=window.location.href;
+    		var string=window.location.href+"?b=";
     		string+=$scope.champArrayId+"l";
     		for(i=0;i<$scope.items.length;i++)
     		{
