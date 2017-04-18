@@ -46,17 +46,17 @@ app.controller("ctrlIt", function($scope,$http) {
     //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
     $scope.getSummoners = function(){
     	console.log("summoners got");
-    	while(selectedSummoners.length<2){
-    		andNum = Math.floor(Math.random() * $scope.summonersArray.length);
+    	while(scope.selectedSummoners.length<2){
+    		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
 	    	{
 	    		var modeCheck=false;
 	    		while(!modeCheck){
-	    			for(var i = 0; i < summonersArray[randNum].mode.length;i++){
-	    				if(summonersArray[randNum].mode[i]=="CLASSIC"){
+	    			for(var i = 0; i < $scope.summonersArray[randNum].mode.length;i++){
+	    				if(scope.summonersArray[randNum].mode[i]=="CLASSIC"){
 	    					modeCheck=true;
-	    					$scope.selectedSummoners.push(summonersArray[randNum]);
-	    					console.log(selectedSummoners);
+	    					$scope.selectedSummoners.push(scope.summonersArray[randNum]);
+	    					console.log(scope.selectedSummoners);
 	    				}
 	    			}
 	    		}
