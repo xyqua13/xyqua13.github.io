@@ -53,10 +53,10 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	{
 	    		var modeCheck=false;
 	    		while(!modeCheck){
-	    			for(var i = 0; i < $scope.summonersArray[randNum].mode.length;i++){
-	    				if($scope.summonersArray[randNum].mode[i]=="CLASSIC"){
+	    			for(var i = 0; i < hId.mode.length;i++){
+	    				if(hId.mode[i]=="CLASSIC"){
 	    					modeCheck=true;
-	    					$scope.selectedSummoners.push($scope.summonersArray[randNum]);
+	    					$scope.selectedSummoners.push(hId);
 	    					console.log($scope.selectedSummoners);
 	    				}
 	    			}
