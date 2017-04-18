@@ -20,6 +20,9 @@ app.controller("ctrlIt", function($scope,$http) {
     var allDoneSum=false;
     var allDoneBuild=false;
     var allDoneChamps=false;
+    var allDataSum=false;
+    var allDataItems=false;
+    var allDataChamps=false;
 
     var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
@@ -31,14 +34,16 @@ app.controller("ctrlIt", function($scope,$http) {
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
     	//console.log($scope.championsArray);
-    	$scope.getChamp();
+    	allDataChamps=true;
+    	checkBuild();
     });
 
     //GET ITEMS
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
     	//console.log($scope.allItems);
-    	$scope.getItems();
+    	allDataItems=true;
+    	checkBuild();
     });
     //GET Summoners
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/summoner.json').then(function(response){
@@ -46,8 +51,36 @@ app.controller("ctrlIt", function($scope,$http) {
     	//console.log($scope.allSummoners);
     	$scope.summonersArray = Object.keys($scope.allSummoners.data);
     	//console.log($scope.summonersArray);
-    	$scope.getSummoners();
+    	allDataSum=true;
+    	checkBuild();
     });
+
+
+    function getParameterByName(name, url) {
+	    if (!url) {
+	      url = window.location.href;
+	    }
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+
+	function checkBuild(){
+		if(allDataSum&&allDataItems&&allDataChamps){
+			console.log(getParameterByName("b"));
+			$scope.getChamp();
+			$scope.getSummoners();
+			$scope.getItems();
+		}
+	}
+
+
+
+
+
 
 
 
@@ -61,7 +94,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	hId=$scope.allSummoners.data[$scope.summonersArray[randNum]];
     		modeCheck=false;
     		count=0;
-    		console.log(hId);
+    		//console.log(hId);
     		while(!modeCheck&&count<50){
     			for(var i = 0; i < hId.modes.length;i++){
     				if(hId.modes[i]=="CLASSIC"){
