@@ -102,7 +102,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		for(var i = 8; i < 10;i++){
 	    			var id=parseInt(buildParamArray[i],16);
 	    			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
-					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":randNum};
+					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":id};
 					$scope.selectedSummoners.push(holdSum);
 					//console.log($scope.selectedSummoners);
     				}
@@ -282,6 +282,8 @@ app.controller("ctrlIt", function($scope,$http) {
     		var d = new Date();
 			string+= d.getTime().toString(16);
 			$scope.buildString=string;
+			jQuery('.body').show();
+			jQuery('.loader').hide();
     	}
     }
 });
