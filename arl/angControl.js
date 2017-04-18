@@ -76,7 +76,17 @@ app.controller("ctrlIt", function($scope,$http) {
 			if(buildParam!=null){
 				buildParamArray=buildParam.split("l");
 				console.log(buildParamArray);
-				console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
+				//console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
+				hId=$scope.allChampions.data[$scope.championsArray[buildParamArray[0]]];
+				$scope.champName=hId.name;
+	    		$scope.champId=hId.key;
+	    		$scope.champArrayId=randNum;
+	    		$scope.champImgIcon=getImg+'champion/'+hId.image.full;
+	    		$scope.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
+	    		$scope.champBGImage = getChampSplash +hId.id+'_0.jpg';
+	    		$scope.champTitle = hId.title;
+	    		//$scope.document.body.style.backgroundImage="url($scope.champBGImage)";
+	    		jQuery('.champImg').css('background-image','url('+$scope.champBGImage+')');
 
 			}//else{
 				$scope.getChamp();
