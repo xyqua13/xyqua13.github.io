@@ -36,7 +36,7 @@ app.controller("ctrlIt", function($scope,$http) {
     //GET Summoners
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/summoner.json').then(function(response){
     	$scope.allSummoners = response.data;
-    	console.log($scope.allItems);
+    	console.log($scope.allSummoners);
     	$scope.getSummoners();
     });
     //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
