@@ -102,11 +102,11 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		for(var i = 8; i < 10;i++){
 	    			var id=parseInt(buildParamArray[i],16);
 	    			hId=$scope.allSummoners.data[$scope.summonersArray[id]];
-					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":randNum}
+					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.image.full,"id":randNum};
 					$scope.selectedSummoners.push(holdSum);
 					//console.log($scope.selectedSummoners);
     				}
-    			}
+    			
 
 
 
