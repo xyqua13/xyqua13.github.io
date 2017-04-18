@@ -281,6 +281,12 @@ app.controller("ctrlIt", function($scope,$http) {
     	$scope.stringBuild();
 	}
 
+	function getCookie(name) {
+	  var value = "; " + document.cookie;
+	  var parts = value.split("; " + name + "=");
+	  if (parts.length == 2) return parts.pop().split(";").shift();
+	}
+
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string=window.location.hostname+document.location.pathname+"?b=";
@@ -296,8 +302,27 @@ app.controller("ctrlIt", function($scope,$http) {
     		var d = new Date();
 			string+= d.getTime().toString(16);
 			$scope.buildString=string;
+
+
+			var hd= new Date();
+			hd.setMonth(hd.getMonth() + 1);
+			ce=hd.toUTCString();
+
+			pb=[];
+			for(i=0;i<5;i++){
+				pb.push(getCookie("pb"+i));
+			}
+			for(i=4;i>0;i--){
+				document.cookie = "pb"+i+"="+pb[i-1]+"; expires="+ce+"; path=/";
+			}
+			document.cookie = "pb0="+string+"; expires="+ce+"; path=/";
+
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
     	}
+    }
+
+    $scope.prevBuild = function(){
+
     }
 });
