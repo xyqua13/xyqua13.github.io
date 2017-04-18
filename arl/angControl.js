@@ -86,6 +86,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			//console.log(getParameterByName("b"));
 			if(buildParam!=null){
 				cb=getBuild(buildParam);
+				console.log(cb);
 	    		allDoneSum=true;
 			    allDoneBuild=true;
 			    allDoneChamps=true;
