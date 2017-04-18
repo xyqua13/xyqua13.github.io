@@ -39,8 +39,6 @@ app.controller("ctrlIt", function($scope,$http) {
     var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
     var getChampSplash = '//ddragon.leagueoflegends.com/cdn/img/champion/splash/'
-
-
     //GET CHAMPIONS
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
@@ -49,7 +47,6 @@ app.controller("ctrlIt", function($scope,$http) {
     	allDataChamps=true;
     	checkBuild();
     });
-
     //GET ITEMS
     $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
@@ -66,8 +63,6 @@ app.controller("ctrlIt", function($scope,$http) {
     	allDataSum=true;
     	checkBuild();
     });
-
-
     function getParameterByName(name, url) {
 	    if (!url) {
 	      url = window.location.href;
@@ -79,7 +74,6 @@ app.controller("ctrlIt", function($scope,$http) {
 	    if (!results[2]) return '';
 	    return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
-
 	function checkBuild(){
 		if(allDataSum&&allDataItems&&allDataChamps){
 			var buildParam = getParameterByName("b");
@@ -98,7 +92,6 @@ app.controller("ctrlIt", function($scope,$http) {
 			}
 		}
 	}
-
 	function getBuild(param){
 		var h={c:{},i:[],s:[]};
 		var ch={};
@@ -136,13 +129,6 @@ app.controller("ctrlIt", function($scope,$http) {
 		}
 		return h;
 	}
-
-
-
-
-
-
-
     $scope.getSummoners = function(){
     	allDoneSum=false;
     	$scope.cb.s=[];
@@ -304,6 +290,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			$scope.buildString=window.location.hostname+document.location.pathname+"?b="+string;
 
 
+			//resets previous build cookies
 			var hd= new Date();
 			hd.setMonth(hd.getMonth() + 1);
 			ce=hd.toUTCString();
@@ -323,6 +310,11 @@ app.controller("ctrlIt", function($scope,$http) {
     }
 
     $scope.prevBuild = function(){
+    	pb=[];
+		for(i=0;i<5;i++){
+			pb.push(getBuild(getCookie("pb"+i)));
+		}
+		console.log(pb);
 
     }
 });
