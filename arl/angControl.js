@@ -316,9 +316,9 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.prevBuild = function(){
     	$scope.pb=[];
 		for(i=0;i<5;i++){
-			pb.push(getBuild(getCookie("pb"+i)));
+			$scope.pb.push(getBuild(getCookie("pb"+i)));
 		}
-		console.log(pb);
+		console.log($scope.pb);
 
     }
 });
