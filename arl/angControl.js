@@ -90,6 +90,7 @@ app.controller("ctrlIt", function($scope,$http) {
 				$scope.getChamp();
 				$scope.getSummoners();
 				$scope.getItems();
+				$scope.stringBuild();
 			}
 		}
 	}
