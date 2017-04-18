@@ -77,7 +77,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	}
     	}
     	allDoneSum=true;
-    	stringBuild();
+    	$scope.stringBuild();
     }
     $scope.getChamp = function(){
     	//console.log("GET CHAMP");
@@ -99,7 +99,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	}
 	    }
 	    allDoneChamps=true;
-    	stringBuild();
+    	$scope.stringBuild();
 	}
 	$scope.getItems = function(){
 		allDoneBuild=false;
@@ -186,7 +186,7 @@ app.controller("ctrlIt", function($scope,$http) {
 		}
 	    //console.log($scope.allItems.data);
 	    allDoneBuild=true;
-    	stringBuild();
+    	$scope.stringBuild();
 	}
 
     $scope.stringBuild = function(){
