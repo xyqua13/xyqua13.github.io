@@ -10,7 +10,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.items=[];
     $scope.trink="";
     $scope.boots="";
-
+    $scope.allSummoners
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
     //var api_key = "86781244-33e9-4829-ba9a-7b968be0cf6d";
@@ -33,9 +33,16 @@ app.controller("ctrlIt", function($scope,$http) {
     	console.log($scope.allItems);
     	$scope.getItems();
     });
-
+    //GET Summoners
+    $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/summoner.json').then(function(response){
+    	$scope.allSummoners = response.data;
+    	console.log($scope.allItems);
+    	$scope.getSummoners();
+    });
     //$scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(someHtmlVar);
-
+    $scope.getSummoners = function(){
+    	console.log("summoners got");
+    }
     $scope.getChamp = function(){
     	console.log("GET CHAMP");
     	$scope.champId=-1;
