@@ -49,7 +49,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
 
     $scope.getSummoners = function(){
-    	$scoep.selectedSummoners=[]
+    	$scope.selectedSummoners=[]
     	var modeCheck=false;
     	while($scope.selectedSummoners.length<2){
     		randNum = Math.floor(Math.random() * $scope.summonersArray.length);
