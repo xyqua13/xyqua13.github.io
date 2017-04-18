@@ -190,15 +190,18 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string="";
-    		console.log($scope.champId.toString(16));
+    		string+=$scope.champId+"l";
     		for(i=0;i<$scope.items.length;i++)
     		{
-    			console.log($scope.items[i].id.toString(16));
+    			string+=$scope.items[i].id.toString(16)+"l";
     		}
     		for(i=0;i<2;i++)
     		{
-    			console.log($scope.selectedSummoners[i]);
+    			string+=$scope.selectedSummoners[i].id+"l";
     		}
+    		var d = new Date();
+			string+= d.getTime().toString(16);
+			$scope.buildString=string;
     	}
     }
 });
