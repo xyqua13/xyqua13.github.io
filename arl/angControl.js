@@ -9,6 +9,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champArrayId=-1;
     $scope.allItems="";
     $scope.items=[];
+    var hItem={};
     $scope.trink="";
     $scope.boots="";
     $scope.allSummoners="";
@@ -74,6 +75,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			var buildParam = getParameterByName("b");
 			console.log(getParameterByName("b"));
 			if(buildParam!=null){
+				hItem={};
 				buildParamArray=buildParam.split("l");
 				console.log(buildParamArray);
 				//console.log($scope.allChampions.data[$scope.championsArray[buildParamArray[0]]]);
@@ -178,7 +180,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
 	    	hId=$scope.allItems.data[randNum];
-	    	var hItem={};
+	    	hItem={};
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
 	    	 	{
