@@ -195,7 +195,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	}
 	$scope.getItems = function(){
 		allDoneBuild=false;
-		$scope.cb.i.items=[];
+		$scope.cb.i=[];
     	$scope.trink="";
 		while($scope.cb.i.length<1)
 	    {
