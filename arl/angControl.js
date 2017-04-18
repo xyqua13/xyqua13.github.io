@@ -289,7 +289,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			string+= d.getTime().toString(16);
 			$scope.buildString=window.location.hostname+document.location.pathname+"?b="+string;
 
-
+			/*
 			//resets previous build cookies
 			var hd= new Date();
 			hd.setMonth(hd.getMonth() + 1);
@@ -303,10 +303,10 @@ app.controller("ctrlIt", function($scope,$http) {
 				document.cookie = "pb"+i+"="+pb[i-1]+"; expires="+ce+"; path=/";
 			}
 			document.cookie = "pb0="+string+"; expires="+ce+"; path=/";
-
+	*/
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
-			$scope.prevBuild();
+			//$scope.prevBuild();
     	}
     }
 
