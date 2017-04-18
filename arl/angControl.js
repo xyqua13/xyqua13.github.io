@@ -54,7 +54,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    		var modeCheck=false;
 	    		count=0;
 	    		while(!modeCheck&&count<50){
-	    			for(var k = 0; k < hId.modes.length;i++){
+	    			for(var i = 0; i < hId.modes.length;i++){
 	    				if(hId.modes[i]=="CLASSIC"){
 	    					modeCheck=true;
 	    					var holdSum={"name":hId.name,"img":getImg+"spell/"+hId.img.full}
