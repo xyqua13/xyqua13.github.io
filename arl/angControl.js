@@ -6,6 +6,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champTitle ="";
     $scope.allChampions ="";
     $scope.championsArray=[];
+    $scope.champArrayId=-1;
     $scope.allItems="";
     $scope.items=[];
     $scope.trink="";
@@ -128,6 +129,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	if(typeof hId != 'undefined'){
 	    		$scope.champName=hId.name;
 	    		$scope.champId=hId.key;
+	    		$scope.champArrayId=randNum;
 	    		$scope.champImgIcon=getImg+'champion/'+hId.image.full;
 	    		$scope.champImgSprite=getImgShort+'champion/loading/'+hId.id+'_0.jpg';
 	    		$scope.champBGImage = getChampSplash +hId.id+'_0.jpg';
@@ -231,7 +233,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.stringBuild = function(){
     	if(allDoneBuild&&allDoneChamps&&allDoneSum){
     		var string="";
-    		string+=$scope.champId+"l";
+    		string+=$scope.champArrayId+"l";
     		for(i=0;i<$scope.items.length;i++)
     		{
     			string+=$scope.items[i].id.toString(16)+"l";
