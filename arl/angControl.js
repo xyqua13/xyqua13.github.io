@@ -192,6 +192,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
 	    	hId=$scope.allItems.data[randNum];
+	    	console.log(hId);
 	    	hItem={};
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
