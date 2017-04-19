@@ -38,11 +38,11 @@ app.controller("ctrlIt", function($scope,$http) {
 
     var stringLoad=false;
 
-    var getImg = '//ddragon.leagueoflegends.com/cdn/7.7.1/img/';
+    var getImg = '//ddragon.leagueoflegends.com/cdn/7.8.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
     var getChampSplash = '//ddragon.leagueoflegends.com/cdn/img/champion/splash/'
     //GET CHAMPIONS
-    $http.get('//ddragon.leagueoflegends.com/cdn/7.7.1/data/en_US/champion.json').then(function(response){
+    $http.get('//ddragon.leagueoflegends.com/cdn/7.8.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
     	//console.log($scope.championsArray);
@@ -50,14 +50,14 @@ app.controller("ctrlIt", function($scope,$http) {
     	checkBuild();
     });
     //GET ITEMS
-    $http.get('//ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/item.json').then(function(response){
+    $http.get('//ddragon.leagueoflegends.com/cdn/7.8.1/data/en_US/item.json').then(function(response){
     	$scope.allItems = response.data;
     	//console.log($scope.allItems);
     	allDataItems=true;
     	checkBuild();
     });
     //GET Summoners
-    $http.get('//ddragon.leagueoflegends.com/cdn/7.7.1/data/en_US/summoner.json').then(function(response){
+    $http.get('//ddragon.leagueoflegends.com/cdn/7.8.1/data/en_US/summoner.json').then(function(response){
     	$scope.allSummoners = response.data;
     	//console.log($scope.allSummoners);
     	$scope.summonersArray = Object.keys($scope.allSummoners.data);
