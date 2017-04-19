@@ -19,7 +19,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgSprite = "";
     $scope.buildString="";
     $scope.cbn = 0; //currentBuildNumber
-    $scope.map="";
+    $scope.map="11";
     $scope.cb = {c:{},i:[],s:[]};
     //cb=current build
     //c=champion
@@ -196,7 +196,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
 	    	 	{
-	    	 		if(hId.tags[i]=="Boots"&& hId.maps[11] && hId.into.length<7)
+	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && hId.into.length<7)
 	    	 		{
 	    	 			//console.log(hId);
 			    		hItem.id=randNum;
@@ -232,7 +232,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 			//isConsume=true;
 	    	 		}
 	    	 	}
-	    		if($scope.cb.i.length < 6 && hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
+	    		if($scope.cb.i.length < 6 && hId.maps[$scope.map] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
 		    		//console.log(hId);
 		    		hItem.id=randNum;
 		    		hItem.name=hId;
@@ -252,7 +252,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
 	    	 	{
-	    	 		if(hId.tags[i]=="Trinket"&& hId.maps[11] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && hId.tags.length!=0 && typeof hId.inStore == 'undefined')
+	    	 		if(hId.tags[i]=="Trinket"&& hId.maps[$scope.map] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && hId.into.length==0 && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && hId.tags.length!=0 && typeof hId.inStore == 'undefined')
 	    	 		{
 	    	 			//console.log(hId);
 			    		hItem.id=randNum;
