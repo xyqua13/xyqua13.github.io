@@ -324,7 +324,7 @@ app.controller("ctrlIt", function($scope,$http) {
 		//console.log($scope.pb);
     }
     $scope.viewHistory = function(d){
-    	console.log("viewHistory");
+    	//console.log("viewHistory");
     	if(d==0&&$scope.cbn!=4){
     		$scope.cbn+=1;
     	}else if(d==1&&$scope.cbn!=0){
@@ -332,8 +332,10 @@ app.controller("ctrlIt", function($scope,$http) {
     	}else{
     		$scope.cbn=0;
     	}
-    	console.log($scope.cbn);
-    	console.log($scope.cb);
+    	//console.log($scope.cbn);
+    	//console.log($scope.cb);
+    	hb=getBuild(pb[$scope.cbn]);
+    	console.log(hb);
     	$scope.cb=getBuild(pb[$scope.cbn]);
     	jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
     }
