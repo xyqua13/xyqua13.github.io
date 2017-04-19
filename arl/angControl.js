@@ -335,6 +335,6 @@ app.controller("ctrlIt", function($scope,$http) {
     	console.log($scope.cbn);
     	console.log($scope.cb);
     	$scope.cb=getBuild(pb[$scope.cbn]);
-    	jQuery('.champImg').css('background-image','url('+cb.c.champBGImage+')');
+    	jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
     }
 });
