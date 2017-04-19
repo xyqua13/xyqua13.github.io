@@ -18,7 +18,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
     $scope.buildString="";
-    var cbn = 0; //currentBuildNumber
+    $scope.cbn = 0; //currentBuildNumber
 
     $scope.cb = {c:{},i:[],s:[]};
     //cb=current build
@@ -87,7 +87,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			    jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 			    $scope.stringBuild();
 			}else{
-				cbn=0;
+				$scope.cbn=0;
 				$scope.getChamp();
 				$scope.getSummoners();
 				$scope.getItems();
@@ -325,15 +325,16 @@ app.controller("ctrlIt", function($scope,$http) {
     }
     $scope.viewHistory = function(d){
     	console.log("viewHistory");
-    	if(d==0&&cbn!=4){
-    		cbn+=1;
-    	}else if(d==1&&cbn!=0){
-    		cbn-=1;
+    	if(d==0&&$scope.cbn!=4){
+    		$scope.cbn+=1;
+    	}else if(d==1&&$scope.cbn!=0){
+    		$scope.cbn-=1;
     	}else{
-    		cbn=0;
+    		$scope.cbn=0;
     	}
-    	console.log(cbn);
+    	console.log($scope.cbn);
     	console.log($scope.cb);
-    	$scope.cb=getBuild(pb[cbn]);
+    	$scope.cb=getBuild(pb[$scope.cbn]);
+    	jQuery('.champImg').css('background-image','url('+cb.c.champBGImage+')');
     }
 });
