@@ -19,7 +19,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgSprite = "";
     $scope.buildString="";
     $scope.cbn = 0; //currentBuildNumber
-
+    $scope.map="";
     $scope.cb = {c:{},i:[],s:[]};
     //cb=current build
     //c=champion
