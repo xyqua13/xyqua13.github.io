@@ -18,7 +18,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.champImgURL = "";
     $scope.champImgSprite = "";
     $scope.buildString="";
-
+    var cbn = 0; //currentBuildNumber
 
     $scope.cb = {c:{},i:[],s:[]};
     //cb=current build
@@ -87,6 +87,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			    jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
 			    $scope.stringBuild();
 			}else{
+				cbn=0;
 				$scope.getChamp();
 				$scope.getSummoners();
 				$scope.getItems();
@@ -306,7 +307,7 @@ app.controller("ctrlIt", function($scope,$http) {
 
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
-			$scope.prevBuild();
+			$scope.setPrevBuild();
 			window.history.pushState("", "", "/arl/" );
 			allDoneSum=false;
 		    allDoneBuild=false;
@@ -314,13 +315,22 @@ app.controller("ctrlIt", function($scope,$http) {
     	}
     }
 
-    $scope.prevBuild = function(){
+    $scope.setPrevBuild = function(){
     	$scope.pb=[];
 		for(i=0;i<5;i++){
 			var c=getCookie("pb"+i);
 			$scope.pb.push(getBuild(c));
 		}
-		console.log($scope.pb);
-
+		//console.log($scope.pb);
+    }
+    $scope.viewHisotry = function(d){
+    	if(d==0&&cbn!=4){
+    		cbn+=1;
+    	}else if(d==1&&cbn!=0;){
+    		cbn-=1;
+    	}else{
+    		cbn=0;
+    	}
+    	cb=pb[cbn];
     }
 });
