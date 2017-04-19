@@ -36,6 +36,8 @@ app.controller("ctrlIt", function($scope,$http) {
     var allDataItems=false;
     var allDataChamps=false;
 
+    var stringLoad=false;
+
     var getImg = '//ddragon.leagueoflegends.com/cdn/6.24.1/img/';
     var getImgShort = '//ddragon.leagueoflegends.com/cdn/img/';
     var getChampSplash = '//ddragon.leagueoflegends.com/cdn/img/champion/splash/'
@@ -85,6 +87,7 @@ app.controller("ctrlIt", function($scope,$http) {
 			    allDoneBuild=true;
 			    allDoneChamps=true;
 			    jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
+			    stringLoad=true;
 			    $scope.stringBuild();
 			}else{
 				$scope.cbn=0;
@@ -300,13 +303,14 @@ app.controller("ctrlIt", function($scope,$http) {
 			for(i=0;i<5;i++){
 				pb.push(getCookie("pb"+i));
 			}
-			for(i=4;i>0;i--){
+			for(i=4;i>=0;i--){
 				document.cookie = "pb"+i+"="+pb[i-1]+"; expires="+ce+"; path=/";
 			}
 			document.cookie = "pb0="+string+"; expires="+ce+"; path=/";
 
 			//jQuery('.body').show();
 			//jQuery('.loader').hide();
+
 			$scope.setPrevBuild();
 			window.history.pushState("", "", "/arl/" );
 			allDoneSum=false;
