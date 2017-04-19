@@ -324,6 +324,7 @@ app.controller("ctrlIt", function($scope,$http) {
 		//console.log($scope.pb);
     }
     $scope.viewHisotry = function(d){
+    	console.log("viewHistory");
     	if(d==0&&cbn!=4){
     		cbn+=1;
     	}else if(d==1&&cbn!=0){
@@ -331,6 +332,8 @@ app.controller("ctrlIt", function($scope,$http) {
     	}else{
     		cbn=0;
     	}
+    	console.log(cbn);
+    	console.log($scope.cb);
     	$scope.cb=pb[cbn];
     }
 });
