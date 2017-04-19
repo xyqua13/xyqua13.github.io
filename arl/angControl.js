@@ -326,7 +326,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $scope.viewHisotry = function(d){
     	if(d==0&&cbn!=4){
     		cbn+=1;
-    	}else if(d==1&&cbn!=0;){
+    	}else if(d==1&&cbn!=0){
     		cbn-=1;
     	}else{
     		cbn=0;
