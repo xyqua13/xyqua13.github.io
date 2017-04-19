@@ -323,7 +323,7 @@ app.controller("ctrlIt", function($scope,$http) {
 		}
 		//console.log($scope.pb);
     }
-    $scope.viewHisotry = function(d){
+    $scope.viewHistory = function(d){
     	console.log("viewHistory");
     	if(d==0&&cbn!=4){
     		cbn+=1;
