@@ -331,6 +331,6 @@ app.controller("ctrlIt", function($scope,$http) {
     	}else{
     		cbn=0;
     	}
-    	cb=pb[cbn];
+    	$scope.cb=pb[cbn];
     }
 });
