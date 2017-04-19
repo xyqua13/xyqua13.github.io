@@ -334,6 +334,6 @@ app.controller("ctrlIt", function($scope,$http) {
     	}
     	console.log(cbn);
     	console.log($scope.cb);
-    	$scope.cb=pb[cbn];
+    	$scope.cb=getBuild(pb[cbn]);
     }
 });
