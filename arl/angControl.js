@@ -184,11 +184,14 @@ app.controller("ctrlIt", function($scope,$http) {
     	$scope.stringBuild();
 	}
 	$scope.getItems = function(){
+		console.log("-----Start Get Items-----");
 		allDoneBuild=false;
 		$scope.cb.i=[];
     	$scope.trink="";
+    	console.log("-----Boots Loop-----");
 		while($scope.cb.i.length<1)
 	    {
+	    	console.log("Looking for Boots");
 	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
 	    	hId=$scope.allItems.data[randNum];
@@ -201,6 +204,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 		//console.log(hId);
 	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && typeof hId.into == 'undefined')
 	    	 		{
+	    	 			console.log("*****Found Boots*****");
 	    	 			//console.log(hId);
 			    		hItem.id=randNum;
 			    		hItem.name=hId.name;
@@ -212,7 +216,9 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	}
 			}
 		}
+		console.log("-----Start Get Main Items-----");
 	    while($scope.cb.i.length<6){
+	    	console.log("Looking for Item");
 	    	randNum = Math.floor(Math.random() * 999)+3000;
 	    	hId=$scope.allItems.data[randNum];
 	    	var hItem={};
@@ -237,6 +243,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	}
 	    		if($scope.cb.i.length < 6 && hId.maps[$scope.map] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && typeof hId.into == 'undefined' && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && !isTrink && !isBoots&&!isConsume&& hId.tags.length!=0 && typeof hId.inStore == 'undefined'){
 		    		//console.log(hId);
+		    		console.log("***** Item Number "+$scope.cb.i.length+" Found *****");
 		    		hItem.id=randNum;
 		    		hItem.name=hId;
 		    		hItem.icon=getImg+'item/'+hId.image.full;
@@ -247,8 +254,10 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	}
 	    }
 	    //FIND TRINKET
+	    console.log("-----Start Find Trinket-----");
 	    while($scope.cb.i.length < 7)
 	    {
+	    	console.log("-----Looking for Trinket-----");
 	    	randNum = Math.floor(Math.random() * 2999)+1000;
 	    	hId=$scope.allItems.data[randNum];
 	    	var hItem={};
@@ -257,6 +266,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	{
 	    	 		if(hId.tags[i]=="Trinket"&& hId.maps[$scope.map] && typeof hId.requiredChampion == 'undefined' && typeof hId.specialRecipe == 'undefined' && typeof hId.into == 'undefined' && !hId.hideFromAll && hId.name!="" && hId.colloq!="" && hId.tags.length!=0 && typeof hId.inStore == 'undefined')
 	    	 		{
+	    	 			console.log("***** TRINK FOUND *****");
 	    	 			//console.log(hId);
 			    		hItem.id=randNum;
 			    		hItem.name=hId;
@@ -272,6 +282,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    //console.log($scope.allItems.data);
 	    allDoneBuild=true;
     	$scope.stringBuild();
+    	console.log("-----END LOOKING FOR ITEMS-----");
 	}
 
 	function getCookie(name) {
