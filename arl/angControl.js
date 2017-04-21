@@ -199,7 +199,7 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	 	{
 	    	 		console.log("LOOK HERE");
 	    	 		console.log(hId);
-	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && typeof hId.into.length != 'undefined')
+	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && typeof hId.into == 'undefined')
 	    	 		{
 	    	 			//console.log(hId);
 			    		hItem.id=randNum;
