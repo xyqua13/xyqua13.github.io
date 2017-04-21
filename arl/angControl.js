@@ -197,6 +197,8 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
 	    	 	{
+	    	 		console.log("LOOK HERE");
+	    	 		console.log(hId);
 	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && hId.into.length<7)
 	    	 		{
 	    	 			//console.log(hId);
