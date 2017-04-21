@@ -192,13 +192,13 @@ app.controller("ctrlIt", function($scope,$http) {
 	    	//console.log($scope.items.length);
 	    	randNum = Math.floor(Math.random() * 1999)+2000;
 	    	hId=$scope.allItems.data[randNum];
-	    	console.log(hId);
+	    	//console.log(hId);
 	    	hItem={};
 	    	if(typeof hId != 'undefined'){
 	    	 	for(var i=0; i<hId.tags.length;i++)
 	    	 	{
-	    	 		console.log("LOOK HERE");
-	    	 		console.log(hId);
+	    	 		//console.log("LOOK HERE");
+	    	 		//console.log(hId);
 	    	 		if(hId.tags[i]=="Boots"&& hId.maps[$scope.map] && typeof hId.into == 'undefined')
 	    	 		{
 	    	 			//console.log(hId);
@@ -342,7 +342,7 @@ app.controller("ctrlIt", function($scope,$http) {
     	//console.log($scope.cbn);
     	//console.log($scope.cb);
     	hb=getBuild(pb[$scope.cbn]);
-    	console.log(hb);
+    	//console.log(hb);
     	$scope.cb=getBuild(pb[$scope.cbn]);
     	jQuery('.champImg').css('background-image','url('+$scope.cb.c.champBGImage+')');
     }
