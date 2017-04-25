@@ -18,10 +18,18 @@
 
 				<div class="contentWrapper">
 					<div class="champImg">
-						<div class="build col-xs-12 col-md-12 col-lg-12">
+						<div class="build">
 							<div class="champInfo">
 							    <h1>{{cb.c.champName}}</h1>
 							    <h3>{{cb.c.champTitle}}</h3>
+							</div>
+							<div class="champImgArray">
+								<ul>
+									<li class="champSelect" ng-repeat="n in championArray track by $index">
+										<label><input type="checkbox" ng-model="selectedChamps" value="{{n.id}}"">
+										<img class="champSelect" src='{{getImage+championid+".jpg"}}'>
+									</li>
+								</ul>
 							</div>
 						    <br />
 						    <input type="text" name="buildString" value="{{buildString}}" style="color:#000" size="50">
