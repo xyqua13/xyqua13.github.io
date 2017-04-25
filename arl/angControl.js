@@ -66,7 +66,7 @@ app.controller("ctrlIt", function($scope,$http) {
     	checkBuild();
     });
     $scope.getImgSrc=function(n){
-    	return getImg+n+".png";
+    	return getImg+"champion/"+n+".png";
     }
     function getParameterByName(name, url) {
 	    if (!url) {
