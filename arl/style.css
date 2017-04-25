@@ -89,7 +89,6 @@ header{
 	background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
 	background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 );
-
 }
 .build{
 	z-index:10;
@@ -100,6 +99,18 @@ header{
 	bottom: 175px;
 	font-family: 'EB Garamond', serif;
 	font-family: 'Libre Baskerville', serif;
+}
+.champSelectImg{
+	height:40px;
+}
+.checkbox{
+	display:none;
+}
+.champSelect{
+	float:left;
+}
+.theList{
+	width:800px;
 }
 ul{
 	list-style:none;
