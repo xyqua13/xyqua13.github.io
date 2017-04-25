@@ -26,8 +26,10 @@
 							<div class="champImgArray">
 								<ul>
 									<li class="champSelect" ng-repeat="n in championArray track by $index">
-										<label><input type="checkbox" ng-model="selectedChamps" value="{{n.id}}"">
-										<img class="champSelect" src='{{getImage+championid+".jpg"}}'>
+										<label>
+											<input type="checkbox" ng-model="selectedChamps" value="{{n.id}}"">
+											<img class="champSelect" src='{{getImage+championid+".jpg"}}'>
+										</label>	
 									</li>
 								</ul>
 							</div>
