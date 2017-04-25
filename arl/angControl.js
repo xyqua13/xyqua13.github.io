@@ -45,7 +45,7 @@ app.controller("ctrlIt", function($scope,$http) {
     $http.get('//ddragon.leagueoflegends.com/cdn/7.8.1/data/en_US/champion.json').then(function(response){
     	$scope.allChampions = response.data;
     	$scope.championsArray = Object.keys($scope.allChampions.data);
-    	//console.log($scope.championsArray);
+    	console.log($scope.championsArray);
     	allDataChamps=true;
     	checkBuild();
     });
