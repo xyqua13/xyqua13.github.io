@@ -65,6 +65,9 @@ app.controller("ctrlIt", function($scope,$http) {
     	allDataSum=true;
     	checkBuild();
     });
+    $scope.getImgSrc=function(n){
+    	return getImg+n+".png";
+    }
     function getParameterByName(name, url) {
 	    if (!url) {
 	      url = window.location.href;
