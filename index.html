@@ -276,6 +276,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
+
+
+
+
+
+
+
+
+<div  ng-cloak ng-controller="passwordControl">
+            <!--ON THE SUBJECT OF WIRES-->
+            <hr class="col-md-12">
+            <div class="col-md-12">
+                <h2>On the Subject Complex Wires</h2>
+                <div class='col-md-3'>
+                    <h4>Red Wire</h4>
+                    <input type="checkbox" ng-model="redWire">
+                </div>
+                <div class='col-md-3'>
+                    <h4> Blue Wire</h4>
+                    <input type="checkbox" ng-model="blueWire">
+                </div>
+                <div class='col-md-3'>
+                    <h4> &#9733;</h4>
+                    <input type="checkbox" ng-model="starWire">
+                </div>
+                <div class='col-md-3'>
+                    <h4> LED Wire</h4>
+                    <input type="checkbox" ng-model="ledWire">
+                </div>
+                <button type="button" class="btn btn-primary" ng-click="addComplexWire()" class='col-md-12'>Add Wire</button>
+                <h3 class="col-md-12">{{advancedWireResult}}</h3> 
+                <ul class="col-md-3" style="list-style-type:none">
+                    <li ng-repeat="value in basicWires track by $index" class="col-md-12">
+                        <span ng-if="value=='Red'" class="btn-danger col-md-12">
+                            {{value}}
+                            <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                        </span>
+                        <span ng-if="value=='White'" class="btn-secondary col-md-12">
+                                {{value}}
+                            <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                        </span>
+                        <span ng-if="value=='Blue'" class="btn-primary col-md-12">
+                            {{value}}
+                            <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                        </span>
+                        <span ng-if="value=='Black'" style="color:white;background-color:black;float:right;" class="col-md-12">
+                            {{value}}
+                            <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                        </span>
+                         <span ng-if="value=='Yellow'" class="btn-warning col-md-12">
+                            {{value}}
+                            <span ng-click="removeItem($index)" style="float:right;">&times;</span>
+                            <br>
+                        </span>
+                    </li>
+                </ul>
+                <br>
+                <button type="button" class="btn btn-secondary" ng-click="resetBasicWire()" ng-disabled="basicWires.length == 0">RESET</button>
+            </div>
+            </div>
+
+
+
+
           
  <script>
  console.log("5");
