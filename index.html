@@ -151,9 +151,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           
           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div  ng-cloak ng-controller="sequenceControl">
+           <!--ON THE SUBJECT OF WIRE SEQUENCES-->   
+           <hr class="col-sm-12">
+           <br />
+            <div class="col-sm-12">
+            <h2>On the Subject of Wire Sequences</h2>
+              <div class="col-sm-4">
+                <div class="col-sm-12" style="background-color:#d9534f; color:white;"><h4>RED</h4></div>
+                <button type="button" class="btn btn-default col-sm-4" 
+                ng-click="addWireSeq('Red', 'A')">A</button>
+                <button type="button" class="btn btn-default col-sm-4"
+                ng-click="addWireSeq('Red', 'B')">B</button>
+                <button type="button" class="btn btn-default col-sm-4"
+                ng-click="addWireSeq('Red', 'C')">C</button>
+              </div>
+              <div class="col-sm-4">
+                <div class="bg-primary col-sm-12"><h4>BLUE</h4></div>
+                <button type="button" class="btn btn-default col-sm-4" 
+                ng-click="addWireSeq('Blue', 'A')">A</button>
+                <button type="button" class="btn btn-default col-sm-4" 
+                ng-click="addWireSeq('Blue', 'B')">B</button>
+                <button type="button" class="btn btn-default col-sm-4" 
+                ng-click="addWireSeq('Blue', 'C')">C</button>
+              </div>
+              <div class="col-sm-4">
+                <div class="bg-primary col-sm-12" style="background-color:black; color:white;"><h4>BLACK</h4></div>
+                <button type="button" class="btn btn-default col-sm-4"
+                ng-click="addWireSeq('Black', 'A')">A</button>
+                <button type="button" class="btn btn-default col-sm-4"
+                ng-click="addWireSeq('Black', 'B')">B</button>
+                <button type="button" class="btn btn-default col-sm-4"
+                ng-click="addWireSeq('Black', 'C')">C</button>
+              </div>
+                  <div class="col-sm-12"><h3>{{seqResult}}</h3></div>
+                  <button type="button" class="btn btn-default col-sm-4"
+                ng-click="resetWireSeq()">Reset Wire Sequences</button>
+            </div>
+</div>
+
+
+
+
+
           
  <script>
- console.log("3");
+ console.log("4");
  </script>
 
 </div>
