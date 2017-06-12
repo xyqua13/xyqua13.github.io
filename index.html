@@ -32,7 +32,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="lib/js/sequnceWire.js"></script>
     <script src="lib/js/password.js"></script>
     
-    <div ng-app="keepTalkikng" ng-cloak ng-controller="keeptTalkingControl">
+    <div ng-app="keepTalkikng" ng-cloak ng-controller="wireCutControl">
     <div class="col-md-12">
        <h2>Input SECTION</h2>
         <h4> Serial Number</h4>
@@ -51,7 +51,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         LIT: <input type="checkbox" ng-model="isLit">
         <button type="button" ng-click="addInd()" class="btn btn-primary" ng-true-value="true" ng-false-value="false" ng-disabled="indicatorIN.length < 3">Add Indicator</button>
     </div>
+    </div>
 
+    <div ng-app="keepTalkikng" ng-cloak ng-controller="keepTalkingControl">
         <div ng-hide="litIndLit.length==0 || !serial">
 
             <!--ON THE SUBJECT OF WIRES-->
