@@ -109,8 +109,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+          <div  ng-cloak ng-controller="buttonControl">
+           <!--ON THE SUBJECT OF BUTTONS-->
+            <hr class="col-sm-12">
+            <div class="class-sm-12">
+              <h2>On the Subject of Button</h2>
+              <div class="col-sm-12">
+                    <h4>Button Text: </h4><input ng-model="btnTxt" type="text" class="col-sm-6">
+              </div>
+              <button type="button" class="btn btn-primary col-sm-4" ng-click="theButton('blue')" ng-disabled="btnShowStrip">Blue</button>
+              <button type="button" class="btn btn-danger col-sm-4" ng-click="theButton('red')" ng-disabled="btnShowStrip">Red</button>
+              <button type="button" class="btn btn-warning col-sm-4" ng-click="theButton('yellow')" ng-disabled="btnShowStrip">Yellow</button>
+              <button type="button" class="btn btn-secondary col-sm-4" ng-click="theButton('white')" ng-disabled="btnShowStrip">White</button>
+              <button type="button" class="btn col-sm-4" style="color:white;background-color:black;" ng-click="theButton('black')" ng-disabled="btnShowStrip">Black</button>
+              <div class="col-sm-12">
+                <h3>{{btnResponse}}</h3>
+              </div>
+              <div class="col-sm-12" ng-show="btnShowStrip">
+                <h4 class="col-sm-12">Color Strip</h4>
+                <div class="bg-primary col-sm-4"><h4>Relase on 4</h4></div>
+                <div class="bg-warning col-sm-4" style="background-color:#F89406"><h4>Relase on 5</h4></div>
+                <div class="bg-secondary col-sm-4"><h4>ALL OTHERS 1</h4></div>
+              </div>
+            </div>
+            <br />
+            </div>
+          
+          
+          
  <script>
- console.log("2");
+ console.log("3");
  </script>
 
 </div>
