@@ -216,9 +216,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div  ng-cloak ng-controller="passwordControl">
+                <!--ON THE SUBJECT OF PASSWORD-->   
+            <hr class="col-sm-12">
+           <br />
+            <div class="col-sm-12">
+                <h2>On the Subject of Passwords</h2>
+                <div>
+                    <div  class="col-md-4">
+                        <h4>First Position Options:</h4> 
+                        <input id="filterChar1" type = "text"; ng-model="serial1" ng-blur="passwordSerial()">
+                    </div>
+                    <div  class="col-md-4">
+                        <h4>Second Position Options:</h4> 
+                        <input id="filterChar2" type = "text"; ng-model="serial2"  ng-disabled="!serial1" ng-blur="passwordSerial()">
+                    </div>
+                    <div  class="col-md-4">
+                        <h4>Third Position Options:</h4> 
+                        <input id="filterChar3" type = "text"; ng-model="serial3" ng-disabled="!serial2" ng-blur="passwordSerial()">
+                    </div>
+                    <div  class="col-md-4">
+                        <h4>Fourth Position Options:</h4> 
+                        <input id="filterChar4" type = "text"; ng-model="serial4" ng-disabled="!serial3" ng-blur="passwordSerial()">
+                    </div>
+                    <div  class="col-md-4">
+                        <h4>Ffith Position Options:</h4> 
+                        <input id="filterChar5" type = "text"; ng-model="serial5" ng-disabled="!serial4" ng-blur="passwordSerial()">
+                    </div>
+                    <div  class="col-md-4">
+                        <h4>RESET</h4> 
+                        <button type="button" class="btn btn-default" ng-click="resetPass()">Reset Passwords</button>
+                    </div>
+                    <ul class="col-md-12" id="passUL" style="list-style-type:none">
+                        <li ng-repeat="value in passList" class="col-md-3">
+                            {{value}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+</div>
+
+
+
+
+
+
           
  <script>
- console.log("4");
+ console.log("5");
  </script>
 
 </div>
