@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- -->
+    <script src="lib/js/jquery-3.1.1.min.js"></script>
+    <script src="lib/js/angular.min.js"></script>
+    <script src="lib/js/bootstrap.js"></script>
+    <script src="lib/js/angLib.js"></script>
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="lib/css/index.css">
+
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<p>{{mode}}</p>
+	<div id="enterData" ng-hide="mode">
+    <ul>
+        <li ng-repeat="x in qs">
+            {{x}}
+            <span ng-click="removeQ($index)">&times;</span>
+        </li>
+    </ul>
+    <label>Question</label><input ng-model="qIn" id="qIn"><br>
+
+    <p>*Minimum of 3 responses with </p>
+    <button class="addfields" ng-click="addNewChoice()">Add Answer</button>
+    <fieldset  data-ng-repeat="response in responses">
+      <input class="answerInput" type="text" ng-model="response.answer" name="" placeholder="Answer">
+      <input class="answerNumber" type="text" ng-model="response.number" name="" placeholder="Number">
+      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+   </fieldset>
+   
+		<button ng-click="addQ()">Save Question</button>
+		<button class="skipQuesiton" ng-click="done()">DONE</button>
+    <p>{{errortext}}</p>
+    <p>{{responses}}</p>
+
+    <label>Saved JSON</label>
+    <br>
+    <textarea rows="5" cols="70" id='jsonInput' ng-model="jsonLoad">{{qsJSON}}</textarea>
+    <br>
+    <button class="skipQuesiton" ng-click="loadJSON()">Load</button>
+    </div>
+  </div>
+	<div id="theGame" ng-show="mode">
+
+		<div ng-repeat="x in sqs">
+			{{x}}
+		</div>
+		<button class="skipQuesiton" ng-click="skip()">Skip Question</button>
+	</div>
+
+</div>
+
+</body>
